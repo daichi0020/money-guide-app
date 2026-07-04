@@ -726,6 +726,377 @@ const T = {
   blue: "#8BC470", blueBg: "#E8F2D9", // green as primary accent
 };
 
+// ─── ICON COMPONENT ─────────────────────────────────
+// ナルの世界観に合わせて手描き感のあるオリジナルSVGアイコン
+const Icon = ({name, size = 24, color = "currentColor", strokeWidth = 2}) => {
+  const c = color;
+  const sw = strokeWidth;
+
+  const icons = {
+    // ═══ TAB ICONS ═══
+    home: (
+      <g>
+        {/* 屋根のスプラウト（ナルの葉と同じテーマ） */}
+        <path d="M12 2C11 2.5 11 3.5 12 4C13 3.5 13 2.5 12 2Z" fill={c} opacity="0.6"/>
+        <line x1="12" y1="4" x2="12" y2="6" stroke={c} strokeWidth={sw*0.7} strokeLinecap="round"/>
+        {/* 屋根 */}
+        <path d="M4 12L12 5.5L20 12" stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round"/>
+        {/* 家の本体 */}
+        <path d="M6 11V20C6 20.5 6.5 21 7 21H10.5V15.5H13.5V21H17C17.5 21 18 20.5 18 20V11"
+              fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round"/>
+      </g>
+    ),
+    work: (
+      <g>
+        {/* ハンドル */}
+        <path d="M9 6.5V5.5C9 4.7 9.7 4 10.5 4H13.5C14.3 4 15 4.7 15 5.5V6.5"
+              stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+        {/* バッグ本体 */}
+        <rect x="3.5" y="6.5" width="17" height="13" rx="2.5"
+              fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw}/>
+        {/* 中央のライン */}
+        <path d="M3.5 12H20.5" stroke={c} strokeWidth={sw*0.85} strokeLinecap="round"/>
+        {/* 錠 */}
+        <rect x="10.5" y="11" width="3" height="2" rx="0.5" fill={c} opacity="0.6"/>
+      </g>
+    ),
+    tax: (
+      <g>
+        {/* 書類本体 */}
+        <path d="M6 3.5H14L18.5 8V19.5C18.5 20.3 17.8 21 17 21H6C5.2 21 4.5 20.3 4.5 19.5V5C4.5 4.2 5.2 3.5 6 3.5Z"
+              fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round"/>
+        {/* 折り目 */}
+        <path d="M14 3.5V8H18.5" stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+        {/* グラフ棒 */}
+        <line x1="8" y1="17" x2="8" y2="14" stroke={c} strokeWidth={sw*0.9} strokeLinecap="round"/>
+        <line x1="11.5" y1="17" x2="11.5" y2="12" stroke={c} strokeWidth={sw*0.9} strokeLinecap="round"/>
+        <line x1="15" y1="17" x2="15" y2="15" stroke={c} strokeWidth={sw*0.9} strokeLinecap="round"/>
+      </g>
+    ),
+    nisa: (
+      <g>
+        {/* コイン */}
+        <ellipse cx="12" cy="19" rx="6.5" ry="2" fill={c} fillOpacity="0.2" stroke={c} strokeWidth={sw} strokeLinecap="round"/>
+        {/* 茎 */}
+        <line x1="12" y1="17" x2="12" y2="9" stroke={c} strokeWidth={sw*0.85} strokeLinecap="round"/>
+        {/* 左の葉 */}
+        <path d="M12 13C10.5 13 8.5 11.5 8 9.5C10 9 12 10.5 12 13Z"
+              fill={c} fillOpacity="0.35" stroke={c} strokeWidth={sw*0.85} strokeLinejoin="round"/>
+        {/* 右の葉 */}
+        <path d="M12 10C13.5 10 15.5 8.5 16 6.5C14 6 12 7.5 12 10Z"
+              fill={c} fillOpacity="0.35" stroke={c} strokeWidth={sw*0.85} strokeLinejoin="round"/>
+      </g>
+    ),
+    ai: (
+      <g>
+        {/* 吹き出し */}
+        <path d="M3.5 5.5C3.5 4.7 4.2 4 5 4H19C19.8 4 20.5 4.7 20.5 5.5V14C20.5 14.8 19.8 15.5 19 15.5H14L10 20V15.5H5C4.2 15.5 3.5 14.8 3.5 14V5.5Z"
+              fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round"/>
+        {/* きらめき */}
+        <path d="M12 7L12.8 9.2L15 10L12.8 10.8L12 13L11.2 10.8L9 10L11.2 9.2L12 7Z"
+              fill={c} fillOpacity="0.6" stroke={c} strokeWidth={sw*0.6} strokeLinejoin="round"/>
+      </g>
+    ),
+
+    // ═══ 準備するもの / GUIDE ICONS ═══
+    phone: (
+      <g>
+        <rect x="6.5" y="2.5" width="11" height="19" rx="2.5"
+              fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw}/>
+        <line x1="9.5" y1="4.5" x2="14.5" y2="4.5" stroke={c} strokeWidth={sw*0.7} strokeLinecap="round"/>
+        <circle cx="12" cy="18.5" r="1" fill={c}/>
+      </g>
+    ),
+    laptop: (
+      <g>
+        <rect x="4" y="5" width="16" height="11" rx="1.5"
+              fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw}/>
+        <path d="M2.5 19H21.5" stroke={c} strokeWidth={sw} strokeLinecap="round"/>
+        <path d="M10 19L10.5 17H13.5L14 19" stroke={c} strokeWidth={sw*0.8} strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+      </g>
+    ),
+    email: (
+      <g>
+        <rect x="3" y="5.5" width="18" height="13" rx="2"
+              fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw}/>
+        <path d="M4 7L12 13L20 7" stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+      </g>
+    ),
+    education: (
+      <g>
+        {/* 帽子 */}
+        <path d="M2 9L12 4.5L22 9L12 13.5L2 9Z"
+              fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw} strokeLinejoin="round"/>
+        {/* 房 */}
+        <path d="M18 10V15" stroke={c} strokeWidth={sw*0.8} strokeLinecap="round"/>
+        <circle cx="18" cy="16" r="0.9" fill={c}/>
+        {/* 本 */}
+        <path d="M6 11V16C6 17 8 18 12 18C16 18 18 17 18 16V11"
+              stroke={c} strokeWidth={sw*0.9} strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+      </g>
+    ),
+    bank: (
+      <g>
+        {/* 屋根 */}
+        <path d="M3 9L12 4L21 9" stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M3 9H21" stroke={c} strokeWidth={sw*0.9} strokeLinecap="round"/>
+        {/* 柱 */}
+        <line x1="6" y1="9" x2="6" y2="18" stroke={c} strokeWidth={sw*0.9} strokeLinecap="round"/>
+        <line x1="10" y1="9" x2="10" y2="18" stroke={c} strokeWidth={sw*0.9} strokeLinecap="round"/>
+        <line x1="14" y1="9" x2="14" y2="18" stroke={c} strokeWidth={sw*0.9} strokeLinecap="round"/>
+        <line x1="18" y1="9" x2="18" y2="18" stroke={c} strokeWidth={sw*0.9} strokeLinecap="round"/>
+        {/* 基礎 */}
+        <path d="M2.5 18.5H21.5" stroke={c} strokeWidth={sw} strokeLinecap="round"/>
+        <rect x="2" y="18" width="20" height="2.5" rx="0.5" fill={c} fillOpacity="0.15"/>
+      </g>
+    ),
+    id: (
+      <g>
+        <rect x="3" y="5" width="18" height="14" rx="2"
+              fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw}/>
+        <circle cx="8.5" cy="11" r="2" fill={c} fillOpacity="0.3" stroke={c} strokeWidth={sw*0.8}/>
+        <path d="M5 16.5C5 15 6.5 14 8.5 14C10.5 14 12 15 12 16.5" stroke={c} strokeWidth={sw*0.8} strokeLinecap="round" fill="none"/>
+        <line x1="14" y1="10" x2="18" y2="10" stroke={c} strokeWidth={sw*0.7} strokeLinecap="round"/>
+        <line x1="14" y1="13" x2="18" y2="13" stroke={c} strokeWidth={sw*0.7} strokeLinecap="round"/>
+      </g>
+    ),
+    camera: (
+      <g>
+        <path d="M3 8.5C3 7.7 3.7 7 4.5 7H8L9.5 5H14.5L16 7H19.5C20.3 7 21 7.7 21 8.5V18C21 18.8 20.3 19.5 19.5 19.5H4.5C3.7 19.5 3 18.8 3 18V8.5Z"
+              fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round"/>
+        <circle cx="12" cy="13" r="3.5" fill={c} fillOpacity="0.3" stroke={c} strokeWidth={sw*0.85}/>
+        <circle cx="12" cy="13" r="1.5" fill={c}/>
+      </g>
+    ),
+    mic: (
+      <g>
+        <rect x="9" y="3" width="6" height="12" rx="3"
+              fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw}/>
+        <path d="M5 11V12C5 15.5 8 18 12 18C16 18 19 15.5 19 12V11" stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+        <line x1="12" y1="18" x2="12" y2="21" stroke={c} strokeWidth={sw} strokeLinecap="round"/>
+        <line x1="9" y1="21" x2="15" y2="21" stroke={c} strokeWidth={sw} strokeLinecap="round"/>
+      </g>
+    ),
+    art: (
+      <g>
+        {/* パレット */}
+        <path d="M12 3C7 3 3 6.5 3 11C3 14 5 16 8 16C8.5 16 9 15.5 9 15C9 13.5 10 13 11 13H14C16.5 13 18 11 18 8.5C18 5.5 15.5 3 12 3Z"
+              fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round"/>
+        {/* ペイントドット */}
+        <circle cx="7" cy="8" r="1" fill={c}/>
+        <circle cx="11" cy="6" r="1" fill={c} opacity="0.7"/>
+        <circle cx="15" cy="8" r="1" fill={c} opacity="0.5"/>
+        <circle cx="14" cy="11" r="1" fill={c} opacity="0.9"/>
+      </g>
+    ),
+    pen: (
+      <g>
+        {/* ペン */}
+        <path d="M14 4L20 10L11 19L4 20L5 13L14 4Z"
+              fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M12 6L18 12" stroke={c} strokeWidth={sw*0.9} strokeLinecap="round"/>
+      </g>
+    ),
+    bicycle: (
+      <g>
+        <circle cx="6" cy="16" r="3.5" fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw}/>
+        <circle cx="18" cy="16" r="3.5" fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw}/>
+        <path d="M6 16L10 9L15 9L18 16" stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+        <path d="M10 9L13 16L18 16" stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+        <circle cx="15" cy="6" r="1" fill={c}/>
+      </g>
+    ),
+    bag: (
+      <g>
+        {/* 配達バッグ */}
+        <path d="M5 7V19C5 20 5.7 21 7 21H17C18.3 21 19 20 19 19V7"
+              fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M4 4H20L19 7H5L4 4Z"
+              fill={c} fillOpacity="0.25" stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round"/>
+        {/* ハンドル */}
+        <path d="M9 11H15" stroke={c} strokeWidth={sw*0.8} strokeLinecap="round"/>
+        <path d="M9 14H15" stroke={c} strokeWidth={sw*0.8} strokeLinecap="round"/>
+      </g>
+    ),
+    package: (
+      <g>
+        <path d="M4 8L12 4L20 8V17L12 21L4 17V8Z"
+              fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M4 8L12 12L20 8" stroke={c} strokeWidth={sw*0.9} strokeLinecap="round" strokeLinejoin="round"/>
+        <line x1="12" y1="12" x2="12" y2="21" stroke={c} strokeWidth={sw*0.9} strokeLinecap="round"/>
+        {/* リボン */}
+        <line x1="8" y1="6" x2="16" y2="10" stroke={c} strokeWidth={sw*0.7} strokeLinecap="round"/>
+      </g>
+    ),
+    time: (
+      <g>
+        <circle cx="12" cy="12" r="8.5" fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw}/>
+        <path d="M12 7V12L15 15" stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+      </g>
+    ),
+    money: (
+      <g>
+        {/* コイン（ナル風） */}
+        <circle cx="12" cy="12" r="8" fill={c} fillOpacity="0.2" stroke={c} strokeWidth={sw}/>
+        <path d="M9 10C9 8.5 10.5 8 12 8C13.5 8 15 8.5 15 10C15 11 14 11.5 12 12C10 12.5 9 13 9 14C9 15.5 10.5 16 12 16C13.5 16 15 15.5 15 14"
+              stroke={c} strokeWidth={sw*0.9} strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+        <line x1="12" y1="6.5" x2="12" y2="17.5" stroke={c} strokeWidth={sw*0.9} strokeLinecap="round"/>
+      </g>
+    ),
+    location: (
+      <g>
+        <path d="M12 22C12 22 20 15 20 10C20 5.5 16.5 2 12 2C7.5 2 4 5.5 4 10C4 15 12 22 12 22Z"
+              fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round"/>
+        <circle cx="12" cy="10" r="3" fill={c} fillOpacity="0.35" stroke={c} strokeWidth={sw*0.9}/>
+      </g>
+    ),
+    family: (
+      <g>
+        {/* 大人 */}
+        <circle cx="8" cy="7" r="2.5" fill={c} fillOpacity="0.2" stroke={c} strokeWidth={sw*0.9}/>
+        <path d="M4 18C4 15 5.5 13 8 13C10.5 13 12 15 12 18" stroke={c} strokeWidth={sw*0.9} strokeLinecap="round" fill="none"/>
+        {/* 子供 */}
+        <circle cx="17" cy="9" r="2" fill={c} fillOpacity="0.2" stroke={c} strokeWidth={sw*0.9}/>
+        <path d="M13.5 18C13.5 16 15 14 17 14C19 14 20.5 16 20.5 18" stroke={c} strokeWidth={sw*0.9} strokeLinecap="round" fill="none"/>
+      </g>
+    ),
+    screen: (
+      <g>
+        <rect x="3" y="4" width="18" height="12" rx="2"
+              fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw}/>
+        <line x1="8" y1="20" x2="16" y2="20" stroke={c} strokeWidth={sw} strokeLinecap="round"/>
+        <line x1="12" y1="16" x2="12" y2="20" stroke={c} strokeWidth={sw*0.9} strokeLinecap="round"/>
+      </g>
+    ),
+    book: (
+      <g>
+        <path d="M4 5C4 4 5 3 6 3H11V20H6C5 20 4 19 4 18V5Z"
+              fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M20 5C20 4 19 3 18 3H13V20H18C19 20 20 19 20 18V5Z"
+              fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round"/>
+      </g>
+    ),
+    voice: (
+      <g>
+        {/* 話す人 */}
+        <circle cx="9" cy="8" r="3" fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw}/>
+        <path d="M4 20C4 16 6 14 9 14C12 14 14 16 14 20" stroke={c} strokeWidth={sw} strokeLinecap="round" fill="none"/>
+        {/* 音波 */}
+        <path d="M17 9C18 10 18 12 17 13" stroke={c} strokeWidth={sw*0.9} strokeLinecap="round" fill="none"/>
+        <path d="M19 7C21 9 21 13 19 15" stroke={c} strokeWidth={sw*0.9} strokeLinecap="round" fill="none"/>
+      </g>
+    ),
+    sprout: (
+      <g>
+        {/* 芽（ナルと同じ） */}
+        <path d="M12 21V10" stroke={c} strokeWidth={sw} strokeLinecap="round"/>
+        <path d="M12 12C10 12 8 10 7.5 7.5C10 7.5 12 9 12 12Z"
+              fill={c} fillOpacity="0.35" stroke={c} strokeWidth={sw*0.9} strokeLinejoin="round"/>
+        <path d="M12 9C14 9 16 7 16.5 4.5C14 4.5 12 6 12 9Z"
+              fill={c} fillOpacity="0.35" stroke={c} strokeWidth={sw*0.9} strokeLinejoin="round"/>
+      </g>
+    ),
+    world: (
+      <g>
+        <circle cx="12" cy="12" r="8.5" fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw}/>
+        <path d="M3.5 12H20.5" stroke={c} strokeWidth={sw*0.85} strokeLinecap="round"/>
+        <path d="M12 3.5C14.5 6 15.5 9 15.5 12C15.5 15 14.5 18 12 20.5C9.5 18 8.5 15 8.5 12C8.5 9 9.5 6 12 3.5Z"
+              stroke={c} strokeWidth={sw*0.85} strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+      </g>
+    ),
+
+    // ═══ TIP/ALERT ICONS ═══
+    lightbulb: (
+      <g>
+        {/* 電球 */}
+        <path d="M12 3C8.5 3 6 5.5 6 9C6 11 7 12.5 8 13.5V16C8 16.5 8.5 17 9 17H15C15.5 17 16 16.5 16 16V13.5C17 12.5 18 11 18 9C18 5.5 15.5 3 12 3Z"
+              fill={c} fillOpacity="0.2" stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round"/>
+        <line x1="9" y1="19" x2="15" y2="19" stroke={c} strokeWidth={sw} strokeLinecap="round"/>
+        <line x1="10" y1="21.5" x2="14" y2="21.5" stroke={c} strokeWidth={sw*0.9} strokeLinecap="round"/>
+        {/* きらめき */}
+        <path d="M12 6V9" stroke={c} strokeWidth={sw*0.7} strokeLinecap="round" opacity="0.7"/>
+      </g>
+    ),
+    alert: (
+      <g>
+        {/* アラート */}
+        <circle cx="12" cy="12" r="9" fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw}/>
+        <line x1="12" y1="7.5" x2="12" y2="13" stroke={c} strokeWidth={sw*1.1} strokeLinecap="round"/>
+        <circle cx="12" cy="16.5" r="1" fill={c}/>
+      </g>
+    ),
+    warning: (
+      <g>
+        {/* 警告三角 */}
+        <path d="M12 3L21 19H3L12 3Z"
+              fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round"/>
+        <line x1="12" y1="10" x2="12" y2="14" stroke={c} strokeWidth={sw} strokeLinecap="round"/>
+        <circle cx="12" cy="16.5" r="0.9" fill={c}/>
+      </g>
+    ),
+    tools: (
+      <g>
+        {/* レンチ */}
+        <path d="M14.5 6.5C13.5 5.5 13.5 3.5 15 2.5C16.5 1.5 19 2 20 3.5C21 5 20 7 19 7.5C18 8 16.5 7.5 15.5 6.5L14.5 6.5Z"
+              fill={c} fillOpacity="0.2" stroke={c} strokeWidth={sw*0.9} strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M14.5 6.5L4 17C3 18 3 20 4 21C5 22 7 22 8 21L18.5 10.5"
+              stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+      </g>
+    ),
+    target: (
+      <g>
+        <circle cx="12" cy="12" r="8.5" fill={c} fillOpacity="0.1" stroke={c} strokeWidth={sw}/>
+        <circle cx="12" cy="12" r="5" fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw*0.9}/>
+        <circle cx="12" cy="12" r="2" fill={c} opacity="0.6"/>
+      </g>
+    ),
+    credit_card: (
+      <g>
+        <rect x="2.5" y="5.5" width="19" height="13" rx="2"
+              fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw}/>
+        <line x1="2.5" y1="9.5" x2="21.5" y2="9.5" stroke={c} strokeWidth={sw} strokeLinecap="round"/>
+        <line x1="5" y1="14" x2="9" y2="14" stroke={c} strokeWidth={sw*0.9} strokeLinecap="round"/>
+      </g>
+    ),
+    scooter: (
+      <g>
+        {/* スクーター */}
+        <circle cx="6" cy="17" r="3" fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw}/>
+        <circle cx="18" cy="17" r="3" fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw}/>
+        <path d="M6 17L10 10L15 10L15 5H17" stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+        <path d="M15 10L18 17" stroke={c} strokeWidth={sw} strokeLinecap="round"/>
+      </g>
+    ),
+    cart: (
+      <g>
+        <path d="M3 4H5L7 15H17L19 8H7" stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+        <path d="M7 8H19L17 15H7L7 8Z" fill={c} fillOpacity="0.15"/>
+        <circle cx="9" cy="19" r="1.5" fill={c} fillOpacity="0.3" stroke={c} strokeWidth={sw*0.9}/>
+        <circle cx="15" cy="19" r="1.5" fill={c} fillOpacity="0.3" stroke={c} strokeWidth={sw*0.9}/>
+      </g>
+    ),
+    video: (
+      <g>
+        {/* ビデオカメラ */}
+        <rect x="3" y="7" width="12" height="10" rx="1.5" fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw}/>
+        <path d="M15 10L21 7V17L15 14V10Z" fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round"/>
+      </g>
+    ),
+    briefcase_mini: (
+      <g>
+        <rect x="3" y="7" width="18" height="13" rx="2" fill={c} fillOpacity="0.15" stroke={c} strokeWidth={sw}/>
+        <path d="M9 7V5.5C9 4.7 9.7 4 10.5 4H13.5C14.3 4 15 4.7 15 5.5V7" stroke={c} strokeWidth={sw} strokeLinecap="round" fill="none"/>
+      </g>
+    ),
+  };
+
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{display: "inline-block", verticalAlign: "middle"}}>
+      {icons[name] || null}
+    </svg>
+  );
+};
+
 
 // ─── APP ────────────────────────────────────────────────
 export default function App() {
@@ -905,11 +1276,11 @@ export default function App() {
   );
 
   const TABS = [
-    {id:"home",l:"Home",icon:"🏠"},
-    {id:"job",l:"副業",icon:"💼"},
-    {id:"tax",l:"確定申告",icon:"📊"},
-    {id:"nisa",l:"NISA",icon:"💰"},
-    {id:"chat",l:"AI",icon:"🤖"}
+    {id:"home",l:"Home",icon:"home"},
+    {id:"job",l:"副業",icon:"work"},
+    {id:"tax",l:"確定申告",icon:"tax"},
+    {id:"nisa",l:"NISA",icon:"nisa"},
+    {id:"chat",l:"AI",icon:"ai"}
   ];
 
   // ─── HOME ──────────────────────────────────────────
@@ -1060,15 +1431,15 @@ export default function App() {
     );
     const GuideTip = ({type = "tip", title, children}) => {
       const styles = {
-        tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "💡" },
-        warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "⚠️" },
-        alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "🚨" },
-        naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "🌱" },
+        tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "lightbulb" },
+        warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "warning" },
+        alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "alert" },
+        naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "sprout" },
       }[type];
       return (
         <div style={{background: styles.bg, borderRadius: 20, padding: "18px 22px", border: `2px solid ${styles.border}40`, margin: "14px 0"}}>
           <div style={{display: "flex", gap: 10, alignItems: "flex-start"}}>
-            <span style={{fontSize: 20, flexShrink: 0, lineHeight: 1.4}}>{styles.icon}</span>
+            <div style={{flexShrink: 0, color: styles.color, display: "flex", alignItems: "center"}}><Icon name={styles.icon} size={22} strokeWidth={2}/></div>
             <div style={{flex: 1, minWidth: 0}}>
               {title && <div style={{fontFamily: T.sans, fontSize: 13, fontWeight: 800, color: styles.color, marginBottom: 6, letterSpacing: "0.02em"}}>{title}</div>}
               <div style={{fontFamily: T.sans, fontSize: 14, lineHeight: 1.85, color: T.primary, fontWeight: 500}}>{children}</div>
@@ -1192,15 +1563,15 @@ export default function App() {
       );
       const TipBox = ({type = "tip", title, children}) => {
         const styles = {
-          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "💡" },
-          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "⚠️" },
-          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "🚨" },
-          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "🌱" },
+          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "lightbulb" },
+          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "warning" },
+          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "alert" },
+          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "sprout" },
         }[type];
         return (
           <div style={{background: styles.bg, borderRadius: 20, padding: "18px 22px", border: `2px solid ${styles.border}40`, margin: "14px 0"}}>
             <div style={{display: "flex", gap: 10, alignItems: "flex-start"}}>
-              <span style={{fontSize: 20, flexShrink: 0, lineHeight: 1.4}}>{styles.icon}</span>
+              <div style={{flexShrink: 0, color: styles.color, display: "flex", alignItems: "center"}}><Icon name={styles.icon} size={22} strokeWidth={2}/></div>
               <div style={{flex: 1, minWidth: 0}}>
                 {title && <div style={{fontFamily: T.sans, fontSize: 13, fontWeight: 800, color: styles.color, marginBottom: 6, letterSpacing: "0.02em"}}>{title}</div>}
                 <div style={{fontFamily: T.sans, fontSize: 14, lineHeight: 1.85, color: T.primary, fontWeight: 500}}>{children}</div>
@@ -1273,17 +1644,17 @@ export default function App() {
             <SectionTitle eyebrow="Section 1" num="0" title="始める前に準備するもの" accent={T.pink}/>
             <div style={{display: "grid", gap: 12}}>
               {[
-                { icon: "📱", title: "スマホ（カメラ付き）", desc: "ラクマは公式アプリが基本。商品写真を撮るのでカメラ必須。iPhone・Androidどちらも対応。" },
-                { icon: "📧", title: "メールアドレス", desc: "Gmail・docomo・auなど、確認メールを受け取れるアドレス。" },
-                { icon: "📦", title: "売りたい不用品", desc: "服・本・家電・コスメ・おもちゃなど、家にある使わなくなったもの。" },
-                { icon: "🏦", title: "銀行口座（後でOK）", desc: "売上を現金で受け取る時に必要。楽天銀行だと振込手数料無料。" },
-                { icon: "🛒", title: "楽天会員アカウント（推奨）", desc: "あれば登録がスムーズ。楽天ポイントも貯まる。" },
+                { icon: "phone", title: "スマホ（カメラ付き）", desc: "ラクマは公式アプリが基本。商品写真を撮るのでカメラ必須。iPhone・Androidどちらも対応。" },
+                { icon: "email", title: "メールアドレス", desc: "Gmail・docomo・auなど、確認メールを受け取れるアドレス。" },
+                { icon: "package", title: "売りたい不用品", desc: "服・本・家電・コスメ・おもちゃなど、家にある使わなくなったもの。" },
+                { icon: "bank", title: "銀行口座（後でOK）", desc: "売上を現金で受け取る時に必要。楽天銀行だと振込手数料無料。" },
+                { icon: "cart", title: "楽天会員アカウント（推奨）", desc: "あれば登録がスムーズ。楽天ポイントも貯まる。" },
               ].map(item => (
                 <div key={item.title} style={{
                   background: T.white, borderRadius: 22, padding: "20px 24px",
                   border: `2px solid ${T.borderLight}`, display: "grid", gridTemplateColumns: "auto 1fr", gap: 16, alignItems: "flex-start",
                 }}>
-                  <div style={{fontSize: 28, lineHeight: 1.2}}>{item.icon}</div>
+                  <div style={{color: T.pink, display: "flex", alignItems: "center", justifyContent: "center", width: 44, height: 44, borderRadius: 12, background: T.pinkBg}}><Icon name={item.icon} size={26} strokeWidth={2}/></div>
                   <div>
                     <div style={{fontFamily: T.sans, fontSize: 15, fontWeight: 700, color: T.primary, marginBottom: 4}}>{item.title}</div>
                     <div style={{fontFamily: T.sans, fontSize: 13, lineHeight: 1.8, color: T.secondary, fontWeight: 500}}>{item.desc}</div>
@@ -1463,15 +1834,15 @@ export default function App() {
       );
       const TipBox = ({type = "tip", title, children}) => {
         const styles = {
-          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "💡" },
-          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "⚠️" },
-          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "🚨" },
-          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "🌱" },
+          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "lightbulb" },
+          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "warning" },
+          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "alert" },
+          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "sprout" },
         }[type];
         return (
           <div style={{background: styles.bg, borderRadius: 20, padding: "18px 22px", border: `2px solid ${styles.border}40`, margin: "14px 0"}}>
             <div style={{display: "flex", gap: 10, alignItems: "flex-start"}}>
-              <span style={{fontSize: 20, flexShrink: 0, lineHeight: 1.4}}>{styles.icon}</span>
+              <div style={{flexShrink: 0, color: styles.color, display: "flex", alignItems: "center"}}><Icon name={styles.icon} size={22} strokeWidth={2}/></div>
               <div style={{flex: 1, minWidth: 0}}>
                 {title && <div style={{fontFamily: T.sans, fontSize: 13, fontWeight: 800, color: styles.color, marginBottom: 6, letterSpacing: "0.02em"}}>{title}</div>}
                 <div style={{fontFamily: T.sans, fontSize: 14, lineHeight: 1.85, color: T.primary, fontWeight: 500}}>{children}</div>
@@ -1544,17 +1915,17 @@ export default function App() {
             <SectionTitle eyebrow="Section 1" num="0" title="始める前に準備するもの" accent={T.pink}/>
             <div style={{display: "grid", gap: 12}}>
               {[
-                { icon: "📱", title: "スマホ", desc: "Yahoo!フリマアプリをインストール。iPhone・Android対応。" },
-                { icon: "🆔", title: "Yahoo! JAPAN ID", desc: "Yahoo!アカウントが必要。なければ無料で作成可能。" },
-                { icon: "💳", title: "PayPayアカウント（推奨）", desc: "売上をPayPay残高で即受け取りたい人は登録しておく。" },
-                { icon: "📦", title: "売りたい不用品", desc: "本・服・家電・小物など、家にある不用品。" },
-                { icon: "🏦", title: "銀行口座（後でOK）", desc: "現金化したい時に必要。" },
+                { icon: "phone", title: "スマホ", desc: "Yahoo!フリマアプリをインストール。iPhone・Android対応。" },
+                { icon: "id", title: "Yahoo! JAPAN ID", desc: "Yahoo!アカウントが必要。なければ無料で作成可能。" },
+                { icon: "credit_card", title: "PayPayアカウント（推奨）", desc: "売上をPayPay残高で即受け取りたい人は登録しておく。" },
+                { icon: "package", title: "売りたい不用品", desc: "本・服・家電・小物など、家にある不用品。" },
+                { icon: "bank", title: "銀行口座（後でOK）", desc: "現金化したい時に必要。" },
               ].map(item => (
                 <div key={item.title} style={{
                   background: T.white, borderRadius: 22, padding: "20px 24px",
                   border: `2px solid ${T.borderLight}`, display: "grid", gridTemplateColumns: "auto 1fr", gap: 16, alignItems: "flex-start",
                 }}>
-                  <div style={{fontSize: 28, lineHeight: 1.2}}>{item.icon}</div>
+                  <div style={{color: T.pink, display: "flex", alignItems: "center", justifyContent: "center", width: 44, height: 44, borderRadius: 12, background: T.pinkBg}}><Icon name={item.icon} size={26} strokeWidth={2}/></div>
                   <div>
                     <div style={{fontFamily: T.sans, fontSize: 15, fontWeight: 700, color: T.primary, marginBottom: 4}}>{item.title}</div>
                     <div style={{fontFamily: T.sans, fontSize: 13, lineHeight: 1.8, color: T.secondary, fontWeight: 500}}>{item.desc}</div>
@@ -1734,15 +2105,15 @@ export default function App() {
       );
       const TipBox = ({type = "tip", title, children}) => {
         const styles = {
-          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "💡" },
-          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "⚠️" },
-          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "🚨" },
-          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "🌱" },
+          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "lightbulb" },
+          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "warning" },
+          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "alert" },
+          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "sprout" },
         }[type];
         return (
           <div style={{background: styles.bg, borderRadius: 20, padding: "18px 22px", border: `2px solid ${styles.border}40`, margin: "14px 0"}}>
             <div style={{display: "flex", gap: 10, alignItems: "flex-start"}}>
-              <span style={{fontSize: 20, flexShrink: 0, lineHeight: 1.4}}>{styles.icon}</span>
+              <div style={{flexShrink: 0, color: styles.color, display: "flex", alignItems: "center"}}><Icon name={styles.icon} size={22} strokeWidth={2}/></div>
               <div style={{flex: 1, minWidth: 0}}>
                 {title && <div style={{fontFamily: T.sans, fontSize: 13, fontWeight: 800, color: styles.color, marginBottom: 6, letterSpacing: "0.02em"}}>{title}</div>}
                 <div style={{fontFamily: T.sans, fontSize: 14, lineHeight: 1.85, color: T.primary, fontWeight: 500}}>{children}</div>
@@ -1815,17 +2186,17 @@ export default function App() {
             <SectionTitle eyebrow="Section 1" num="0" title="始める前に準備するもの" accent={T.pink}/>
             <div style={{display: "grid", gap: 12}}>
               {[
-                { icon: "📧", title: "メールアドレス", desc: "Gmail・docomo・auなど、確認メールを受け取れるアドレス。" },
-                { icon: "📱", title: "スマホかパソコン", desc: "タスク案件はスマホで十分。本格的な案件はPCがおすすめ。" },
-                { icon: "🏦", title: "銀行口座", desc: "報酬振込先。" },
-                { icon: "🆔", title: "本人確認書類", desc: "運転免許証・マイナンバーカードなど。本人確認すると案件獲得率UP。" },
-                { icon: "👨‍👩‍👧", title: "お子さんとの時間調整", desc: "空いた時間に少しずつ取り組める案件が多いので、無理せず始められる。" },
+                { icon: "email", title: "メールアドレス", desc: "Gmail・docomo・auなど、確認メールを受け取れるアドレス。" },
+                { icon: "phone", title: "スマホかパソコン", desc: "タスク案件はスマホで十分。本格的な案件はPCがおすすめ。" },
+                { icon: "bank", title: "銀行口座", desc: "報酬振込先。" },
+                { icon: "id", title: "本人確認書類", desc: "運転免許証・マイナンバーカードなど。本人確認すると案件獲得率UP。" },
+                { icon: "family", title: "お子さんとの時間調整", desc: "空いた時間に少しずつ取り組める案件が多いので、無理せず始められる。" },
               ].map(item => (
                 <div key={item.title} style={{
                   background: T.white, borderRadius: 22, padding: "20px 24px",
                   border: `2px solid ${T.borderLight}`, display: "grid", gridTemplateColumns: "auto 1fr", gap: 16, alignItems: "flex-start",
                 }}>
-                  <div style={{fontSize: 28, lineHeight: 1.2}}>{item.icon}</div>
+                  <div style={{color: T.pink, display: "flex", alignItems: "center", justifyContent: "center", width: 44, height: 44, borderRadius: 12, background: T.pinkBg}}><Icon name={item.icon} size={26} strokeWidth={2}/></div>
                   <div>
                     <div style={{fontFamily: T.sans, fontSize: 15, fontWeight: 700, color: T.primary, marginBottom: 4}}>{item.title}</div>
                     <div style={{fontFamily: T.sans, fontSize: 13, lineHeight: 1.8, color: T.secondary, fontWeight: 500}}>{item.desc}</div>
@@ -2014,15 +2385,15 @@ export default function App() {
       );
       const TipBox = ({type = "tip", title, children}) => {
         const styles = {
-          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "💡" },
-          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "⚠️" },
-          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "🚨" },
-          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "🌱" },
+          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "lightbulb" },
+          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "warning" },
+          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "alert" },
+          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "sprout" },
         }[type];
         return (
           <div style={{background: styles.bg, borderRadius: 20, padding: "18px 22px", border: `2px solid ${styles.border}40`, margin: "14px 0"}}>
             <div style={{display: "flex", gap: 10, alignItems: "flex-start"}}>
-              <span style={{fontSize: 20, flexShrink: 0, lineHeight: 1.4}}>{styles.icon}</span>
+              <div style={{flexShrink: 0, color: styles.color, display: "flex", alignItems: "center"}}><Icon name={styles.icon} size={22} strokeWidth={2}/></div>
               <div style={{flex: 1, minWidth: 0}}>
                 {title && <div style={{fontFamily: T.sans, fontSize: 13, fontWeight: 800, color: styles.color, marginBottom: 6, letterSpacing: "0.02em"}}>{title}</div>}
                 <div style={{fontFamily: T.sans, fontSize: 14, lineHeight: 1.85, color: T.primary, fontWeight: 500}}>{children}</div>
@@ -2095,18 +2466,18 @@ export default function App() {
             <SectionTitle eyebrow="Section 1" num="0" title="始める前に準備するもの" accent={T.pink}/>
             <div style={{display: "grid", gap: 12}}>
               {[
-                { icon: "📱", title: "スマホ", desc: "出前館配達員アプリ用。" },
-                { icon: "🚲", title: "配達する乗り物", desc: "自転車・原付・バイク・軽自動車のいずれか。" },
-                { icon: "🎒", title: "配達バッグ", desc: "Amazonで購入（または公式バッグ）。3,000〜5,000円。" },
-                { icon: "🆔", title: "本人確認書類", desc: "運転免許証・マイナンバーカードなど。" },
-                { icon: "🏦", title: "銀行口座", desc: "報酬振込先。" },
-                { icon: "🛵", title: "原付・バイクの追加書類", desc: "車検証、自賠責保険証。自転車の場合は不要。" },
+                { icon: "phone", title: "スマホ", desc: "出前館配達員アプリ用。" },
+                { icon: "bicycle", title: "配達する乗り物", desc: "自転車・原付・バイク・軽自動車のいずれか。" },
+                { icon: "bag", title: "配達バッグ", desc: "Amazonで購入（または公式バッグ）。3,000〜5,000円。" },
+                { icon: "id", title: "本人確認書類", desc: "運転免許証・マイナンバーカードなど。" },
+                { icon: "bank", title: "銀行口座", desc: "報酬振込先。" },
+                { icon: "scooter", title: "原付・バイクの追加書類", desc: "車検証、自賠責保険証。自転車の場合は不要。" },
               ].map(item => (
                 <div key={item.title} style={{
                   background: T.white, borderRadius: 22, padding: "20px 24px",
                   border: `2px solid ${T.borderLight}`, display: "grid", gridTemplateColumns: "auto 1fr", gap: 16, alignItems: "flex-start",
                 }}>
-                  <div style={{fontSize: 28, lineHeight: 1.2}}>{item.icon}</div>
+                  <div style={{color: T.pink, display: "flex", alignItems: "center", justifyContent: "center", width: 44, height: 44, borderRadius: 12, background: T.pinkBg}}><Icon name={item.icon} size={26} strokeWidth={2}/></div>
                   <div>
                     <div style={{fontFamily: T.sans, fontSize: 15, fontWeight: 700, color: T.primary, marginBottom: 4}}>{item.title}</div>
                     <div style={{fontFamily: T.sans, fontSize: 13, lineHeight: 1.8, color: T.secondary, fontWeight: 500}}>{item.desc}</div>
@@ -2305,15 +2676,15 @@ export default function App() {
       );
       const TipBox = ({type = "tip", title, children}) => {
         const styles = {
-          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "💡" },
-          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "⚠️" },
-          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "🚨" },
-          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "🌱" },
+          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "lightbulb" },
+          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "warning" },
+          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "alert" },
+          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "sprout" },
         }[type];
         return (
           <div style={{background: styles.bg, borderRadius: 20, padding: "18px 22px", border: `2px solid ${styles.border}40`, margin: "14px 0"}}>
             <div style={{display: "flex", gap: 10, alignItems: "flex-start"}}>
-              <span style={{fontSize: 20, flexShrink: 0, lineHeight: 1.4}}>{styles.icon}</span>
+              <div style={{flexShrink: 0, color: styles.color, display: "flex", alignItems: "center"}}><Icon name={styles.icon} size={22} strokeWidth={2}/></div>
               <div style={{flex: 1, minWidth: 0}}>
                 {title && <div style={{fontFamily: T.sans, fontSize: 13, fontWeight: 800, color: styles.color, marginBottom: 6, letterSpacing: "0.02em"}}>{title}</div>}
                 <div style={{fontFamily: T.sans, fontSize: 14, lineHeight: 1.85, color: T.primary, fontWeight: 500}}>{children}</div>
@@ -2386,18 +2757,18 @@ export default function App() {
             <SectionTitle eyebrow="Section 1" num="0" title="始める前に準備するもの" accent={T.pink}/>
             <div style={{display: "grid", gap: 12}}>
               {[
-                { icon: "📱", title: "スマホ", desc: "Wolt配達員アプリ用。最新OS推奨。" },
-                { icon: "🚲", title: "配達する乗り物", desc: "自転車推奨（環境配慮型）。原付・バイクもOK。" },
-                { icon: "🎒", title: "配達バッグ", desc: "公式バッグの貸与あり（保証金が必要なことも）。" },
-                { icon: "🆔", title: "本人確認書類", desc: "運転免許証・マイナンバーカード・在留カードなど。" },
-                { icon: "🏦", title: "銀行口座", desc: "報酬振込先。" },
-                { icon: "📍", title: "対応エリア", desc: "東京、大阪、名古屋、福岡など都市部のみ。地方は未対応。" },
+                { icon: "phone", title: "スマホ", desc: "Wolt配達員アプリ用。最新OS推奨。" },
+                { icon: "bicycle", title: "配達する乗り物", desc: "自転車推奨（環境配慮型）。原付・バイクもOK。" },
+                { icon: "bag", title: "配達バッグ", desc: "公式バッグの貸与あり（保証金が必要なことも）。" },
+                { icon: "id", title: "本人確認書類", desc: "運転免許証・マイナンバーカード・在留カードなど。" },
+                { icon: "bank", title: "銀行口座", desc: "報酬振込先。" },
+                { icon: "location", title: "対応エリア", desc: "東京、大阪、名古屋、福岡など都市部のみ。地方は未対応。" },
               ].map(item => (
                 <div key={item.title} style={{
                   background: T.white, borderRadius: 22, padding: "20px 24px",
                   border: `2px solid ${T.borderLight}`, display: "grid", gridTemplateColumns: "auto 1fr", gap: 16, alignItems: "flex-start",
                 }}>
-                  <div style={{fontSize: 28, lineHeight: 1.2}}>{item.icon}</div>
+                  <div style={{color: T.pink, display: "flex", alignItems: "center", justifyContent: "center", width: 44, height: 44, borderRadius: 12, background: T.pinkBg}}><Icon name={item.icon} size={26} strokeWidth={2}/></div>
                   <div>
                     <div style={{fontFamily: T.sans, fontSize: 15, fontWeight: 700, color: T.primary, marginBottom: 4}}>{item.title}</div>
                     <div style={{fontFamily: T.sans, fontSize: 13, lineHeight: 1.8, color: T.secondary, fontWeight: 500}}>{item.desc}</div>
@@ -2571,15 +2942,15 @@ export default function App() {
       );
       const TipBox = ({type = "tip", title, children}) => {
         const styles = {
-          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "💡" },
-          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "⚠️" },
-          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "🚨" },
-          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "🌱" },
+          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "lightbulb" },
+          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "warning" },
+          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "alert" },
+          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "sprout" },
         }[type];
         return (
           <div style={{background: styles.bg, borderRadius: 20, padding: "18px 22px", border: `2px solid ${styles.border}40`, margin: "14px 0"}}>
             <div style={{display: "flex", gap: 10, alignItems: "flex-start"}}>
-              <span style={{fontSize: 20, flexShrink: 0, lineHeight: 1.4}}>{styles.icon}</span>
+              <div style={{flexShrink: 0, color: styles.color, display: "flex", alignItems: "center"}}><Icon name={styles.icon} size={22} strokeWidth={2}/></div>
               <div style={{flex: 1, minWidth: 0}}>
                 {title && <div style={{fontFamily: T.sans, fontSize: 13, fontWeight: 800, color: styles.color, marginBottom: 6, letterSpacing: "0.02em"}}>{title}</div>}
                 <div style={{fontFamily: T.sans, fontSize: 14, lineHeight: 1.85, color: T.primary, fontWeight: 500}}>{children}</div>
@@ -2652,18 +3023,18 @@ export default function App() {
             <SectionTitle eyebrow="Section 1" num="0" title="始める前に準備するもの" accent={T.pink}/>
             <div style={{display: "grid", gap: 12}}>
               {[
-                { icon: "📧", title: "メールアドレス", desc: "連絡用。" },
-                { icon: "📱", title: "スマホかパソコン", desc: "プロフィール作成はPC推奨。" },
-                { icon: "💼", title: "実務経験（重要）", desc: "エンジニアとして2〜3年以上の経験が目安。未経験者向けではない。" },
-                { icon: "📋", title: "職務経歴書", desc: "これまでの経歴を整理した書類。Wordで作成。" },
-                { icon: "🛠", title: "スキルシート", desc: "使える技術スタックの一覧（言語・フレームワーク・ツール）。" },
-                { icon: "🏦", title: "銀行口座", desc: "報酬振込先。" },
+                { icon: "email", title: "メールアドレス", desc: "連絡用。" },
+                { icon: "phone", title: "スマホかパソコン", desc: "プロフィール作成はPC推奨。" },
+                { icon: "briefcase_mini", title: "実務経験（重要）", desc: "エンジニアとして2〜3年以上の経験が目安。未経験者向けではない。" },
+                { icon: "pen", title: "職務経歴書", desc: "これまでの経歴を整理した書類。Wordで作成。" },
+                { icon: "tools", title: "スキルシート", desc: "使える技術スタックの一覧（言語・フレームワーク・ツール）。" },
+                { icon: "bank", title: "銀行口座", desc: "報酬振込先。" },
               ].map(item => (
                 <div key={item.title} style={{
                   background: T.white, borderRadius: 22, padding: "20px 24px",
                   border: `2px solid ${T.borderLight}`, display: "grid", gridTemplateColumns: "auto 1fr", gap: 16, alignItems: "flex-start",
                 }}>
-                  <div style={{fontSize: 28, lineHeight: 1.2}}>{item.icon}</div>
+                  <div style={{color: T.pink, display: "flex", alignItems: "center", justifyContent: "center", width: 44, height: 44, borderRadius: 12, background: T.pinkBg}}><Icon name={item.icon} size={26} strokeWidth={2}/></div>
                   <div>
                     <div style={{fontFamily: T.sans, fontSize: 15, fontWeight: 700, color: T.primary, marginBottom: 4}}>{item.title}</div>
                     <div style={{fontFamily: T.sans, fontSize: 13, lineHeight: 1.8, color: T.secondary, fontWeight: 500}}>{item.desc}</div>
@@ -2837,15 +3208,15 @@ export default function App() {
       );
       const TipBox = ({type = "tip", title, children}) => {
         const styles = {
-          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "💡" },
-          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "⚠️" },
-          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "🚨" },
-          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "🌱" },
+          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "lightbulb" },
+          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "warning" },
+          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "alert" },
+          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "sprout" },
         }[type];
         return (
           <div style={{background: styles.bg, borderRadius: 20, padding: "18px 22px", border: `2px solid ${styles.border}40`, margin: "14px 0"}}>
             <div style={{display: "flex", gap: 10, alignItems: "flex-start"}}>
-              <span style={{fontSize: 20, flexShrink: 0, lineHeight: 1.4}}>{styles.icon}</span>
+              <div style={{flexShrink: 0, color: styles.color, display: "flex", alignItems: "center"}}><Icon name={styles.icon} size={22} strokeWidth={2}/></div>
               <div style={{flex: 1, minWidth: 0}}>
                 {title && <div style={{fontFamily: T.sans, fontSize: 13, fontWeight: 800, color: styles.color, marginBottom: 6, letterSpacing: "0.02em"}}>{title}</div>}
                 <div style={{fontFamily: T.sans, fontSize: 14, lineHeight: 1.85, color: T.primary, fontWeight: 500}}>{children}</div>
@@ -2918,17 +3289,17 @@ export default function App() {
             <SectionTitle eyebrow="Section 1" num="0" title="始める前に準備するもの" accent={T.pink}/>
             <div style={{display: "grid", gap: 12}}>
               {[
-                { icon: "📧", title: "メールアドレス", desc: "Adobe IDの登録用。Gmailなど。" },
-                { icon: "🎨", title: "Adobe ID（あれば便利）", desc: "Adobe Creative Cloud利用者なら既存IDで即連携可能。" },
-                { icon: "💻", title: "パソコン", desc: "作品アップロードはPC推奨。" },
-                { icon: "🎯", title: "作品データ", desc: "あなたの作品（イラスト・写真・デザイン・3DCGなど）。10〜30作品あると魅力的。" },
-                { icon: "📝", title: "作品の説明文", desc: "コンセプト・制作背景・使用ツールなど。英語も併記すると海外からも見られる。" },
+                { icon: "email", title: "メールアドレス", desc: "Adobe IDの登録用。Gmailなど。" },
+                { icon: "art", title: "Adobe ID（あれば便利）", desc: "Adobe Creative Cloud利用者なら既存IDで即連携可能。" },
+                { icon: "laptop", title: "パソコン", desc: "作品アップロードはPC推奨。" },
+                { icon: "target", title: "作品データ", desc: "あなたの作品（イラスト・写真・デザイン・3DCGなど）。10〜30作品あると魅力的。" },
+                { icon: "pen", title: "作品の説明文", desc: "コンセプト・制作背景・使用ツールなど。英語も併記すると海外からも見られる。" },
               ].map(item => (
                 <div key={item.title} style={{
                   background: T.white, borderRadius: 22, padding: "20px 24px",
                   border: `2px solid ${T.borderLight}`, display: "grid", gridTemplateColumns: "auto 1fr", gap: 16, alignItems: "flex-start",
                 }}>
-                  <div style={{fontSize: 28, lineHeight: 1.2}}>{item.icon}</div>
+                  <div style={{color: T.pink, display: "flex", alignItems: "center", justifyContent: "center", width: 44, height: 44, borderRadius: 12, background: T.pinkBg}}><Icon name={item.icon} size={26} strokeWidth={2}/></div>
                   <div>
                     <div style={{fontFamily: T.sans, fontSize: 15, fontWeight: 700, color: T.primary, marginBottom: 4}}>{item.title}</div>
                     <div style={{fontFamily: T.sans, fontSize: 13, lineHeight: 1.8, color: T.secondary, fontWeight: 500}}>{item.desc}</div>
@@ -3109,15 +3480,15 @@ export default function App() {
       );
       const TipBox = ({type = "tip", title, children}) => {
         const styles = {
-          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "💡" },
-          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "⚠️" },
-          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "🚨" },
-          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "🌱" },
+          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "lightbulb" },
+          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "warning" },
+          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "alert" },
+          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "sprout" },
         }[type];
         return (
           <div style={{background: styles.bg, borderRadius: 20, padding: "18px 22px", border: `2px solid ${styles.border}40`, margin: "14px 0"}}>
             <div style={{display: "flex", gap: 10, alignItems: "flex-start"}}>
-              <span style={{fontSize: 20, flexShrink: 0, lineHeight: 1.4}}>{styles.icon}</span>
+              <div style={{flexShrink: 0, color: styles.color, display: "flex", alignItems: "center"}}><Icon name={styles.icon} size={22} strokeWidth={2}/></div>
               <div style={{flex: 1, minWidth: 0}}>
                 {title && <div style={{fontFamily: T.sans, fontSize: 13, fontWeight: 800, color: styles.color, marginBottom: 6, letterSpacing: "0.02em"}}>{title}</div>}
                 <div style={{fontFamily: T.sans, fontSize: 14, lineHeight: 1.85, color: T.primary, fontWeight: 500}}>{children}</div>
@@ -3190,17 +3561,17 @@ export default function App() {
             <SectionTitle eyebrow="Section 1" num="0" title="始める前に準備するもの" accent={T.pink}/>
             <div style={{display: "grid", gap: 12}}>
               {[
-                { icon: "🆔", title: "Googleアカウント", desc: "Gmailアカウントがあれば即可能。" },
-                { icon: "📱", title: "スマホ or PC", desc: "動画撮影・編集にはスマホでも十分。本格的に編集するならPC。" },
-                { icon: "💡", title: "動画コンテンツのアイデア", desc: "何のチャンネルにするか決める。趣味・スキル・知識・体験談など。" },
-                { icon: "🎤", title: "録音環境", desc: "スマホのマイクで十分から始められる。慣れたら外付けマイク（数千円）。" },
-                { icon: "📹", title: "動画編集アプリ", desc: "CapCut（スマホ無料）、DaVinci Resolve（PC無料）が人気。" },
+                { icon: "id", title: "Googleアカウント", desc: "Gmailアカウントがあれば即可能。" },
+                { icon: "phone", title: "スマホ or PC", desc: "動画撮影・編集にはスマホでも十分。本格的に編集するならPC。" },
+                { icon: "lightbulb", title: "動画コンテンツのアイデア", desc: "何のチャンネルにするか決める。趣味・スキル・知識・体験談など。" },
+                { icon: "mic", title: "録音環境", desc: "スマホのマイクで十分から始められる。慣れたら外付けマイク（数千円）。" },
+                { icon: "video", title: "動画編集アプリ", desc: "CapCut（スマホ無料）、DaVinci Resolve（PC無料）が人気。" },
               ].map(item => (
                 <div key={item.title} style={{
                   background: T.white, borderRadius: 22, padding: "20px 24px",
                   border: `2px solid ${T.borderLight}`, display: "grid", gridTemplateColumns: "auto 1fr", gap: 16, alignItems: "flex-start",
                 }}>
-                  <div style={{fontSize: 28, lineHeight: 1.2}}>{item.icon}</div>
+                  <div style={{color: T.pink, display: "flex", alignItems: "center", justifyContent: "center", width: 44, height: 44, borderRadius: 12, background: T.pinkBg}}><Icon name={item.icon} size={26} strokeWidth={2}/></div>
                   <div>
                     <div style={{fontFamily: T.sans, fontSize: 15, fontWeight: 700, color: T.primary, marginBottom: 4}}>{item.title}</div>
                     <div style={{fontFamily: T.sans, fontSize: 13, lineHeight: 1.8, color: T.secondary, fontWeight: 500}}>{item.desc}</div>
@@ -3390,15 +3761,15 @@ export default function App() {
       );
       const TipBox = ({type = "tip", title, children}) => {
         const styles = {
-          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "💡" },
-          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "⚠️" },
-          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "🚨" },
-          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "🌱" },
+          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "lightbulb" },
+          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "warning" },
+          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "alert" },
+          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "sprout" },
         }[type];
         return (
           <div style={{background: styles.bg, borderRadius: 20, padding: "18px 22px", border: `2px solid ${styles.border}40`, margin: "14px 0"}}>
             <div style={{display: "flex", gap: 10, alignItems: "flex-start"}}>
-              <span style={{fontSize: 20, flexShrink: 0, lineHeight: 1.4}}>{styles.icon}</span>
+              <div style={{flexShrink: 0, color: styles.color, display: "flex", alignItems: "center"}}><Icon name={styles.icon} size={22} strokeWidth={2}/></div>
               <div style={{flex: 1, minWidth: 0}}>
                 {title && <div style={{fontFamily: T.sans, fontSize: 13, fontWeight: 800, color: styles.color, marginBottom: 6, letterSpacing: "0.02em"}}>{title}</div>}
                 <div style={{fontFamily: T.sans, fontSize: 14, lineHeight: 1.85, color: T.primary, fontWeight: 500}}>{children}</div>
@@ -3471,18 +3842,18 @@ export default function App() {
             <SectionTitle eyebrow="Section 1" num="0" title="始める前に準備するもの" accent={T.pink}/>
             <div style={{display: "grid", gap: 12}}>
               {[
-                { icon: "📧", title: "メールアドレス", desc: "連絡用。" },
-                { icon: "🎓", title: "学歴・指導経験", desc: "大学名（卒業or在学）、指導科目、指導経験など。" },
-                { icon: "📜", title: "資格・実績", desc: "教員免許、TOEIC、英検などの資格があれば有利。" },
-                { icon: "💻", title: "パソコン + Webカメラ", desc: "オンライン授業用。マイク内蔵PCでOK。" },
-                { icon: "📺", title: "ZOOMアカウント", desc: "オンライン授業の主要ツール。無料で登録可能。" },
-                { icon: "🏦", title: "銀行口座", desc: "報酬振込先。" },
+                { icon: "email", title: "メールアドレス", desc: "連絡用。" },
+                { icon: "education", title: "学歴・指導経験", desc: "大学名（卒業or在学）、指導科目、指導経験など。" },
+                { icon: "pen", title: "資格・実績", desc: "教員免許、TOEIC、英検などの資格があれば有利。" },
+                { icon: "laptop", title: "パソコン + Webカメラ", desc: "オンライン授業用。マイク内蔵PCでOK。" },
+                { icon: "screen", title: "ZOOMアカウント", desc: "オンライン授業の主要ツール。無料で登録可能。" },
+                { icon: "bank", title: "銀行口座", desc: "報酬振込先。" },
               ].map(item => (
                 <div key={item.title} style={{
                   background: T.white, borderRadius: 22, padding: "20px 24px",
                   border: `2px solid ${T.borderLight}`, display: "grid", gridTemplateColumns: "auto 1fr", gap: 16, alignItems: "flex-start",
                 }}>
-                  <div style={{fontSize: 28, lineHeight: 1.2}}>{item.icon}</div>
+                  <div style={{color: T.pink, display: "flex", alignItems: "center", justifyContent: "center", width: 44, height: 44, borderRadius: 12, background: T.pinkBg}}><Icon name={item.icon} size={26} strokeWidth={2}/></div>
                   <div>
                     <div style={{fontFamily: T.sans, fontSize: 15, fontWeight: 700, color: T.primary, marginBottom: 4}}>{item.title}</div>
                     <div style={{fontFamily: T.sans, fontSize: 13, lineHeight: 1.8, color: T.secondary, fontWeight: 500}}>{item.desc}</div>
@@ -3662,15 +4033,15 @@ export default function App() {
       );
       const TipBox = ({type = "tip", title, children}) => {
         const styles = {
-          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "💡" },
-          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "⚠️" },
-          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "🚨" },
-          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "🌱" },
+          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "lightbulb" },
+          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "warning" },
+          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "alert" },
+          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "sprout" },
         }[type];
         return (
           <div style={{background: styles.bg, borderRadius: 20, padding: "18px 22px", border: `2px solid ${styles.border}40`, margin: "14px 0"}}>
             <div style={{display: "flex", gap: 10, alignItems: "flex-start"}}>
-              <span style={{fontSize: 20, flexShrink: 0, lineHeight: 1.4}}>{styles.icon}</span>
+              <div style={{flexShrink: 0, color: styles.color, display: "flex", alignItems: "center"}}><Icon name={styles.icon} size={22} strokeWidth={2}/></div>
               <div style={{flex: 1, minWidth: 0}}>
                 {title && <div style={{fontFamily: T.sans, fontSize: 13, fontWeight: 800, color: styles.color, marginBottom: 6, letterSpacing: "0.02em"}}>{title}</div>}
                 <div style={{fontFamily: T.sans, fontSize: 14, lineHeight: 1.85, color: T.primary, fontWeight: 500}}>{children}</div>
@@ -3739,17 +4110,17 @@ export default function App() {
             <SectionTitle eyebrow="Section 1" num="0" title="始める前に準備するもの" accent={T.pink}/>
             <div style={{display: "grid", gap: 12}}>
               {[
-                { icon: "📧", title: "メールアドレス", desc: "エントリー時の連絡用。" },
-                { icon: "💻", title: "PC or タブレット + ネット環境", desc: "上り・下りとも1.5Mbps以上あれば快適。" },
-                { icon: "🎓", title: "学歴・指導経験", desc: "大学名（卒業or在学）、指導歴、得意分野など。オフラインの指導経験があればスタート可。" },
-                { icon: "🎤", title: "マイク・カメラ", desc: "内蔵でOK。より高品質にしたい場合は外付けも。" },
-                { icon: "🏦", title: "銀行口座", desc: "報酬振込先。" },
+                { icon: "email", title: "メールアドレス", desc: "エントリー時の連絡用。" },
+                { icon: "laptop", title: "PC or タブレット + ネット環境", desc: "上り・下りとも1.5Mbps以上あれば快適。" },
+                { icon: "education", title: "学歴・指導経験", desc: "大学名（卒業or在学）、指導歴、得意分野など。オフラインの指導経験があればスタート可。" },
+                { icon: "mic", title: "マイク・カメラ", desc: "内蔵でOK。より高品質にしたい場合は外付けも。" },
+                { icon: "bank", title: "銀行口座", desc: "報酬振込先。" },
               ].map(item => (
                 <div key={item.title} style={{
                   background: T.white, borderRadius: 22, padding: "20px 24px",
                   border: `2px solid ${T.borderLight}`, display: "grid", gridTemplateColumns: "auto 1fr", gap: 16, alignItems: "flex-start",
                 }}>
-                  <div style={{fontSize: 28, lineHeight: 1.2}}>{item.icon}</div>
+                  <div style={{color: T.pink, display: "flex", alignItems: "center", justifyContent: "center", width: 44, height: 44, borderRadius: 12, background: T.pinkBg}}><Icon name={item.icon} size={26} strokeWidth={2}/></div>
                   <div>
                     <div style={{fontFamily: T.sans, fontSize: 15, fontWeight: 700, color: T.primary, marginBottom: 4}}>{item.title}</div>
                     <div style={{fontFamily: T.sans, fontSize: 13, lineHeight: 1.8, color: T.secondary, fontWeight: 500}}>{item.desc}</div>
@@ -3920,15 +4291,15 @@ export default function App() {
       );
       const TipBox = ({type = "tip", title, children}) => {
         const styles = {
-          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "💡" },
-          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "⚠️" },
-          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "🚨" },
-          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "🌱" },
+          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "lightbulb" },
+          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "warning" },
+          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "alert" },
+          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "sprout" },
         }[type];
         return (
           <div style={{background: styles.bg, borderRadius: 20, padding: "18px 22px", border: `2px solid ${styles.border}40`, margin: "14px 0"}}>
             <div style={{display: "flex", gap: 10, alignItems: "flex-start"}}>
-              <span style={{fontSize: 20, flexShrink: 0, lineHeight: 1.4}}>{styles.icon}</span>
+              <div style={{flexShrink: 0, color: styles.color, display: "flex", alignItems: "center"}}><Icon name={styles.icon} size={22} strokeWidth={2}/></div>
               <div style={{flex: 1, minWidth: 0}}>
                 {title && <div style={{fontFamily: T.sans, fontSize: 13, fontWeight: 800, color: styles.color, marginBottom: 6, letterSpacing: "0.02em"}}>{title}</div>}
                 <div style={{fontFamily: T.sans, fontSize: 14, lineHeight: 1.85, color: T.primary, fontWeight: 500}}>{children}</div>
@@ -3997,17 +4368,17 @@ export default function App() {
             <SectionTitle eyebrow="Section 1" num="0" title="始める前に準備するもの" accent={T.pink}/>
             <div style={{display: "grid", gap: 12}}>
               {[
-                { icon: "📧", title: "メールアドレス", desc: "登録時の連絡用。" },
-                { icon: "🎓", title: "学歴・指導経験", desc: "学歴問わず応募可能。人間性・責任意識・教える力を重視。" },
-                { icon: "📱", title: "スマホ or PC", desc: "登録・案件確認・オンライン指導に使用。" },
-                { icon: "🏦", title: "銀行口座", desc: "報酬振込先。" },
-                { icon: "🗣", title: "面接に対応できる意欲", desc: "登録後に本部との面談があるため、意欲を伝えられる姿勢が大事。" },
+                { icon: "email", title: "メールアドレス", desc: "登録時の連絡用。" },
+                { icon: "education", title: "学歴・指導経験", desc: "学歴問わず応募可能。人間性・責任意識・教える力を重視。" },
+                { icon: "phone", title: "スマホ or PC", desc: "登録・案件確認・オンライン指導に使用。" },
+                { icon: "bank", title: "銀行口座", desc: "報酬振込先。" },
+                { icon: "voice", title: "面接に対応できる意欲", desc: "登録後に本部との面談があるため、意欲を伝えられる姿勢が大事。" },
               ].map(item => (
                 <div key={item.title} style={{
                   background: T.white, borderRadius: 22, padding: "20px 24px",
                   border: `2px solid ${T.borderLight}`, display: "grid", gridTemplateColumns: "auto 1fr", gap: 16, alignItems: "flex-start",
                 }}>
-                  <div style={{fontSize: 28, lineHeight: 1.2}}>{item.icon}</div>
+                  <div style={{color: T.pink, display: "flex", alignItems: "center", justifyContent: "center", width: 44, height: 44, borderRadius: 12, background: T.pinkBg}}><Icon name={item.icon} size={26} strokeWidth={2}/></div>
                   <div>
                     <div style={{fontFamily: T.sans, fontSize: 15, fontWeight: 700, color: T.primary, marginBottom: 4}}>{item.title}</div>
                     <div style={{fontFamily: T.sans, fontSize: 13, lineHeight: 1.8, color: T.secondary, fontWeight: 500}}>{item.desc}</div>
@@ -4199,15 +4570,15 @@ export default function App() {
       );
       const TipBox = ({type = "tip", title, children}) => {
         const styles = {
-          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "💡" },
-          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "⚠️" },
-          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "🚨" },
-          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "🌱" },
+          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "lightbulb" },
+          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "warning" },
+          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "alert" },
+          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "sprout" },
         }[type];
         return (
           <div style={{background: styles.bg, borderRadius: 20, padding: "18px 22px", border: `2px solid ${styles.border}40`, margin: "14px 0"}}>
             <div style={{display: "flex", gap: 10, alignItems: "flex-start"}}>
-              <span style={{fontSize: 20, flexShrink: 0, lineHeight: 1.4}}>{styles.icon}</span>
+              <div style={{flexShrink: 0, color: styles.color, display: "flex", alignItems: "center"}}><Icon name={styles.icon} size={22} strokeWidth={2}/></div>
               <div style={{flex: 1, minWidth: 0}}>
                 {title && <div style={{fontFamily: T.sans, fontSize: 13, fontWeight: 800, color: styles.color, marginBottom: 6, letterSpacing: "0.02em"}}>{title}</div>}
                 <div style={{fontFamily: T.sans, fontSize: 14, lineHeight: 1.85, color: T.primary, fontWeight: 500}}>{children}</div>
@@ -4276,17 +4647,17 @@ export default function App() {
             <SectionTitle eyebrow="Section 1" num="0" title="始める前に準備するもの" accent={T.pink}/>
             <div style={{display: "grid", gap: 12}}>
               {[
-                { icon: "📧", title: "メールアドレス", desc: "登録時の連絡用。" },
-                { icon: "🎓", title: "学歴・指導経験", desc: "学生・社会人・主婦・ベテランまで幅広く。ブランクあり・未経験も歓迎。" },
-                { icon: "📱", title: "スマホ or PC", desc: "登録・案件確認・オンライン指導に使用。" },
-                { icon: "🏦", title: "銀行口座", desc: "報酬振込先。" },
-                { icon: "🗺", title: "対応可能エリアの確認", desc: "対面指導なら自宅から通える範囲を明確に。オンラインなら不要。" },
+                { icon: "email", title: "メールアドレス", desc: "登録時の連絡用。" },
+                { icon: "education", title: "学歴・指導経験", desc: "学生・社会人・主婦・ベテランまで幅広く。ブランクあり・未経験も歓迎。" },
+                { icon: "phone", title: "スマホ or PC", desc: "登録・案件確認・オンライン指導に使用。" },
+                { icon: "bank", title: "銀行口座", desc: "報酬振込先。" },
+                { icon: "location", title: "対応可能エリアの確認", desc: "対面指導なら自宅から通える範囲を明確に。オンラインなら不要。" },
               ].map(item => (
                 <div key={item.title} style={{
                   background: T.white, borderRadius: 22, padding: "20px 24px",
                   border: `2px solid ${T.borderLight}`, display: "grid", gridTemplateColumns: "auto 1fr", gap: 16, alignItems: "flex-start",
                 }}>
-                  <div style={{fontSize: 28, lineHeight: 1.2}}>{item.icon}</div>
+                  <div style={{color: T.pink, display: "flex", alignItems: "center", justifyContent: "center", width: 44, height: 44, borderRadius: 12, background: T.pinkBg}}><Icon name={item.icon} size={26} strokeWidth={2}/></div>
                   <div>
                     <div style={{fontFamily: T.sans, fontSize: 15, fontWeight: 700, color: T.primary, marginBottom: 4}}>{item.title}</div>
                     <div style={{fontFamily: T.sans, fontSize: 13, lineHeight: 1.8, color: T.secondary, fontWeight: 500}}>{item.desc}</div>
@@ -4462,15 +4833,15 @@ export default function App() {
       );
       const TipBox = ({type = "tip", title, children}) => {
         const styles = {
-          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "💡" },
-          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "⚠️" },
-          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "🚨" },
-          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "🌱" },
+          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "lightbulb" },
+          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "warning" },
+          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "alert" },
+          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "sprout" },
         }[type];
         return (
           <div style={{background: styles.bg, borderRadius: 20, padding: "18px 22px", border: `2px solid ${styles.border}40`, margin: "14px 0"}}>
             <div style={{display: "flex", gap: 10, alignItems: "flex-start"}}>
-              <span style={{fontSize: 20, flexShrink: 0, lineHeight: 1.4}}>{styles.icon}</span>
+              <div style={{flexShrink: 0, color: styles.color, display: "flex", alignItems: "center"}}><Icon name={styles.icon} size={22} strokeWidth={2}/></div>
               <div style={{flex: 1, minWidth: 0}}>
                 {title && <div style={{fontFamily: T.sans, fontSize: 13, fontWeight: 800, color: styles.color, marginBottom: 6, letterSpacing: "0.02em"}}>{title}</div>}
                 <div style={{fontFamily: T.sans, fontSize: 14, lineHeight: 1.85, color: T.primary, fontWeight: 500}}>{children}</div>
@@ -4565,17 +4936,17 @@ export default function App() {
             </p>
             <div style={{display: "grid", gap: 12}}>
               {[
-                { icon: "📧", title: "メールアドレス", desc: "Gmailやお使いのメアドでOK。確認メールを受け取れるアドレスを準備。" },
-                { icon: "📱", title: "スマホかパソコン", desc: "サービス出品はパソコンの方が編集しやすい。やり取りはスマホだけで完結可能。" },
-                { icon: "💡", title: "売れるスキル・経験", desc: "プロ級でなくてOK。「○○の相談に乗ります」「○○の経験を共有します」など、誰かの役に立つ知識・経験ならOK。下にアイデア例あり。" },
-                { icon: "🏦", title: "銀行口座の情報", desc: "報酬の振込先として後で必要。楽天銀行・ジャパンネット銀行は振込手数料が安くてお得。" },
-                { icon: "🆔", title: "本人確認書類", desc: "免許証・マイナンバーカード・パスポートのいずれか1つ。本人確認すると信頼度が大幅UP。" },
+                { icon: "email", title: "メールアドレス", desc: "Gmailやお使いのメアドでOK。確認メールを受け取れるアドレスを準備。" },
+                { icon: "phone", title: "スマホかパソコン", desc: "サービス出品はパソコンの方が編集しやすい。やり取りはスマホだけで完結可能。" },
+                { icon: "lightbulb", title: "売れるスキル・経験", desc: "プロ級でなくてOK。「○○の相談に乗ります」「○○の経験を共有します」など、誰かの役に立つ知識・経験ならOK。下にアイデア例あり。" },
+                { icon: "bank", title: "銀行口座の情報", desc: "報酬の振込先として後で必要。楽天銀行・ジャパンネット銀行は振込手数料が安くてお得。" },
+                { icon: "id", title: "本人確認書類", desc: "免許証・マイナンバーカード・パスポートのいずれか1つ。本人確認すると信頼度が大幅UP。" },
               ].map(item => (
                 <div key={item.title} style={{
                   background: T.white, borderRadius: 22, padding: "20px 24px",
                   border: `2px solid ${T.borderLight}`, display: "grid", gridTemplateColumns: "auto 1fr", gap: 16, alignItems: "flex-start",
                 }}>
-                  <div style={{fontSize: 28, lineHeight: 1.2}}>{item.icon}</div>
+                  <div style={{color: T.pink, display: "flex", alignItems: "center", justifyContent: "center", width: 44, height: 44, borderRadius: 12, background: T.pinkBg}}><Icon name={item.icon} size={26} strokeWidth={2}/></div>
                   <div>
                     <div style={{fontFamily: T.sans, fontSize: 15, fontWeight: 700, color: T.primary, marginBottom: 4}}>{item.title}</div>
                     <div style={{fontFamily: T.sans, fontSize: 13, lineHeight: 1.8, color: T.secondary, fontWeight: 500}}>{item.desc}</div>
@@ -4976,15 +5347,15 @@ export default function App() {
       );
       const TipBox = ({type = "tip", title, children}) => {
         const styles = {
-          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "💡" },
-          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "⚠️" },
-          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "🚨" },
-          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "🌱" },
+          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "lightbulb" },
+          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "warning" },
+          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "alert" },
+          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "sprout" },
         }[type];
         return (
           <div style={{background: styles.bg, borderRadius: 20, padding: "18px 22px", border: `2px solid ${styles.border}40`, margin: "14px 0"}}>
             <div style={{display: "flex", gap: 10, alignItems: "flex-start"}}>
-              <span style={{fontSize: 20, flexShrink: 0, lineHeight: 1.4}}>{styles.icon}</span>
+              <div style={{flexShrink: 0, color: styles.color, display: "flex", alignItems: "center"}}><Icon name={styles.icon} size={22} strokeWidth={2}/></div>
               <div style={{flex: 1, minWidth: 0}}>
                 {title && <div style={{fontFamily: T.sans, fontSize: 13, fontWeight: 800, color: styles.color, marginBottom: 6, letterSpacing: "0.02em"}}>{title}</div>}
                 <div style={{fontFamily: T.sans, fontSize: 14, lineHeight: 1.85, color: T.primary, fontWeight: 500}}>{children}</div>
@@ -5060,16 +5431,16 @@ export default function App() {
             </p>
             <div style={{display: "grid", gap: 12}}>
               {[
-                { icon: "📧", title: "メールアドレス", desc: "Gmail（〜@gmail.com）や、お使いの〜@docomo.ne.jp、〜@ezweb.ne.jp、〜@softbank.ne.jpなど。確認メールを受け取れるアドレスならOK。" },
-                { icon: "📱", title: "スマホかパソコン", desc: "どちらか1つで大丈夫。長文の応募メッセージを書くなら、パソコンの方が打ちやすい。" },
-                { icon: "🏦", title: "銀行口座の情報", desc: "報酬の振込先として後で必要になります。楽天銀行・ジャパンネット銀行は振込手数料が安くておすすめ。" },
-                { icon: "🆔", title: "本人確認書類", desc: "運転免許証・マイナンバーカード・パスポートのいずれか1つ。本人確認すると「本人確認済みバッジ」がつき、案件獲得率が上がります。" },
+                { icon: "email", title: "メールアドレス", desc: "Gmail（〜@gmail.com）や、お使いの〜@docomo.ne.jp、〜@ezweb.ne.jp、〜@softbank.ne.jpなど。確認メールを受け取れるアドレスならOK。" },
+                { icon: "phone", title: "スマホかパソコン", desc: "どちらか1つで大丈夫。長文の応募メッセージを書くなら、パソコンの方が打ちやすい。" },
+                { icon: "bank", title: "銀行口座の情報", desc: "報酬の振込先として後で必要になります。楽天銀行・ジャパンネット銀行は振込手数料が安くておすすめ。" },
+                { icon: "id", title: "本人確認書類", desc: "運転免許証・マイナンバーカード・パスポートのいずれか1つ。本人確認すると「本人確認済みバッジ」がつき、案件獲得率が上がります。" },
               ].map(item => (
                 <div key={item.title} style={{
                   background: T.white, borderRadius: 22, padding: "20px 24px",
                   border: `2px solid ${T.borderLight}`, display: "grid", gridTemplateColumns: "auto 1fr", gap: 16, alignItems: "flex-start",
                 }}>
-                  <div style={{fontSize: 28, lineHeight: 1.2}}>{item.icon}</div>
+                  <div style={{color: T.pink, display: "flex", alignItems: "center", justifyContent: "center", width: 44, height: 44, borderRadius: 12, background: T.pinkBg}}><Icon name={item.icon} size={26} strokeWidth={2}/></div>
                   <div>
                     <div style={{fontFamily: T.sans, fontSize: 15, fontWeight: 700, color: T.primary, marginBottom: 4}}>{item.title}</div>
                     <div style={{fontFamily: T.sans, fontSize: 13, lineHeight: 1.8, color: T.secondary, fontWeight: 500}}>{item.desc}</div>
@@ -5412,15 +5783,15 @@ export default function App() {
       );
       const TipBox = ({type = "tip", title, children}) => {
         const styles = {
-          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "💡" },
-          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "⚠️" },
-          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "🚨" },
-          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "🌱" },
+          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "lightbulb" },
+          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "warning" },
+          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "alert" },
+          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "sprout" },
         }[type];
         return (
           <div style={{background: styles.bg, borderRadius: 20, padding: "18px 22px", border: `2px solid ${styles.border}40`, margin: "14px 0"}}>
             <div style={{display: "flex", gap: 10, alignItems: "flex-start"}}>
-              <span style={{fontSize: 20, flexShrink: 0, lineHeight: 1.4}}>{styles.icon}</span>
+              <div style={{flexShrink: 0, color: styles.color, display: "flex", alignItems: "center"}}><Icon name={styles.icon} size={22} strokeWidth={2}/></div>
               <div style={{flex: 1, minWidth: 0}}>
                 {title && <div style={{fontFamily: T.sans, fontSize: 13, fontWeight: 800, color: styles.color, marginBottom: 6, letterSpacing: "0.02em"}}>{title}</div>}
                 <div style={{fontFamily: T.sans, fontSize: 14, lineHeight: 1.85, color: T.primary, fontWeight: 500}}>{children}</div>
@@ -5496,18 +5867,18 @@ export default function App() {
             </p>
             <div style={{display: "grid", gap: 12}}>
               {[
-                { icon: "📱", title: "スマホ", desc: "iPhone・Androidどちらも対応。バッテリーの持ちが悪いと配達中に困るので、モバイルバッテリーも用意できると安心。" },
-                { icon: "🚲", title: "配達する乗り物", desc: "自転車（普通の自転車でOK）、原付（50ccまで）、バイク（125cc以下）、軽自動車のいずれか。電動アシスト自転車があると疲労が大幅に減ります。" },
-                { icon: "🎒", title: "配達バッグ", desc: "Amazonで「Uber Eats バッグ」と検索。3,000〜5,000円の保温保冷バッグ。Uber公式品でなくてもOKだが、料理が崩れない構造のものを選ぶ。" },
-                { icon: "🆔", title: "本人確認書類", desc: "運転免許証・マイナンバーカード・パスポート・在留カードのいずれか1つ。スマホで撮影してアップロードします。" },
-                { icon: "🏦", title: "銀行口座", desc: "報酬の振込先。三井住友銀行・三菱UFJ・ゆうちょなど、どの銀行でもOK。" },
-                { icon: "🛵", title: "原付・バイクの場合は追加書類", desc: "車検証（軽二輪以下）または軽自動車届出済証、自賠責保険証、任意保険証（推奨）。自転車のみの場合は不要。" },
+                { icon: "phone", title: "スマホ", desc: "iPhone・Androidどちらも対応。バッテリーの持ちが悪いと配達中に困るので、モバイルバッテリーも用意できると安心。" },
+                { icon: "bicycle", title: "配達する乗り物", desc: "自転車（普通の自転車でOK）、原付（50ccまで）、バイク（125cc以下）、軽自動車のいずれか。電動アシスト自転車があると疲労が大幅に減ります。" },
+                { icon: "bag", title: "配達バッグ", desc: "Amazonで「Uber Eats バッグ」と検索。3,000〜5,000円の保温保冷バッグ。Uber公式品でなくてもOKだが、料理が崩れない構造のものを選ぶ。" },
+                { icon: "id", title: "本人確認書類", desc: "運転免許証・マイナンバーカード・パスポート・在留カードのいずれか1つ。スマホで撮影してアップロードします。" },
+                { icon: "bank", title: "銀行口座", desc: "報酬の振込先。三井住友銀行・三菱UFJ・ゆうちょなど、どの銀行でもOK。" },
+                { icon: "scooter", title: "原付・バイクの場合は追加書類", desc: "車検証（軽二輪以下）または軽自動車届出済証、自賠責保険証、任意保険証（推奨）。自転車のみの場合は不要。" },
               ].map(item => (
                 <div key={item.title} style={{
                   background: T.white, borderRadius: 22, padding: "20px 24px",
                   border: `2px solid ${T.borderLight}`, display: "grid", gridTemplateColumns: "auto 1fr", gap: 16, alignItems: "flex-start",
                 }}>
-                  <div style={{fontSize: 28, lineHeight: 1.2}}>{item.icon}</div>
+                  <div style={{color: T.pink, display: "flex", alignItems: "center", justifyContent: "center", width: 44, height: 44, borderRadius: 12, background: T.pinkBg}}><Icon name={item.icon} size={26} strokeWidth={2}/></div>
                   <div>
                     <div style={{fontFamily: T.sans, fontSize: 15, fontWeight: 700, color: T.primary, marginBottom: 4}}>{item.title}</div>
                     <div style={{fontFamily: T.sans, fontSize: 13, lineHeight: 1.8, color: T.secondary, fontWeight: 500}}>{item.desc}</div>
@@ -5838,15 +6209,15 @@ export default function App() {
       );
       const TipBox = ({type = "tip", title, children}) => {
         const styles = {
-          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "💡" },
-          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "⚠️" },
-          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "🚨" },
-          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "🌱" },
+          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "lightbulb" },
+          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "warning" },
+          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "alert" },
+          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "sprout" },
         }[type];
         return (
           <div style={{background: styles.bg, borderRadius: 20, padding: "18px 22px", border: `2px solid ${styles.border}40`, margin: "14px 0"}}>
             <div style={{display: "flex", gap: 10, alignItems: "flex-start"}}>
-              <span style={{fontSize: 20, flexShrink: 0, lineHeight: 1.4}}>{styles.icon}</span>
+              <div style={{flexShrink: 0, color: styles.color, display: "flex", alignItems: "center"}}><Icon name={styles.icon} size={22} strokeWidth={2}/></div>
               <div style={{flex: 1, minWidth: 0}}>
                 {title && <div style={{fontFamily: T.sans, fontSize: 13, fontWeight: 800, color: styles.color, marginBottom: 6, letterSpacing: "0.02em"}}>{title}</div>}
                 <div style={{fontFamily: T.sans, fontSize: 14, lineHeight: 1.85, color: T.primary, fontWeight: 500}}>{children}</div>
@@ -5922,16 +6293,16 @@ export default function App() {
             </p>
             <div style={{display: "grid", gap: 12}}>
               {[
-                { icon: "📱", title: "スマホ（カメラ付き）", desc: "メルカリは公式アプリが基本。商品写真を撮るのでカメラが必要。iPhone・Androidどちらも対応。" },
-                { icon: "📧", title: "メールアドレス", desc: "Gmail・docomo・auなど、確認メールを受け取れるアドレス。SMS認証もあるので、電話番号も用意。" },
-                { icon: "📦", title: "売りたい不用品", desc: "服・本・家電・コスメ・おもちゃなど、家にある「使わなくなったもの」がそのままお金に。" },
-                { icon: "🏦", title: "銀行口座（後でOK）", desc: "売上を現金で受け取るときに必要。すぐ売り始める場合は後から登録でも大丈夫。" },
+                { icon: "phone", title: "スマホ（カメラ付き）", desc: "メルカリは公式アプリが基本。商品写真を撮るのでカメラが必要。iPhone・Androidどちらも対応。" },
+                { icon: "email", title: "メールアドレス", desc: "Gmail・docomo・auなど、確認メールを受け取れるアドレス。SMS認証もあるので、電話番号も用意。" },
+                { icon: "package", title: "売りたい不用品", desc: "服・本・家電・コスメ・おもちゃなど、家にある「使わなくなったもの」がそのままお金に。" },
+                { icon: "bank", title: "銀行口座（後でOK）", desc: "売上を現金で受け取るときに必要。すぐ売り始める場合は後から登録でも大丈夫。" },
               ].map(item => (
                 <div key={item.title} style={{
                   background: T.white, borderRadius: 22, padding: "20px 24px",
                   border: `2px solid ${T.borderLight}`, display: "grid", gridTemplateColumns: "auto 1fr", gap: 16, alignItems: "flex-start",
                 }}>
-                  <div style={{fontSize: 28, lineHeight: 1.2}}>{item.icon}</div>
+                  <div style={{color: T.pink, display: "flex", alignItems: "center", justifyContent: "center", width: 44, height: 44, borderRadius: 12, background: T.pinkBg}}><Icon name={item.icon} size={26} strokeWidth={2}/></div>
                   <div>
                     <div style={{fontFamily: T.sans, fontSize: 15, fontWeight: 700, color: T.primary, marginBottom: 4}}>{item.title}</div>
                     <div style={{fontFamily: T.sans, fontSize: 13, lineHeight: 1.8, color: T.secondary, fontWeight: 500}}>{item.desc}</div>
@@ -6298,15 +6669,15 @@ export default function App() {
       );
       const TipBox = ({type = "tip", title, children}) => {
         const styles = {
-          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "💡" },
-          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "⚠️" },
-          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "🚨" },
-          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "🌱" },
+          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "lightbulb" },
+          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "warning" },
+          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "alert" },
+          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "sprout" },
         }[type];
         return (
           <div style={{background: styles.bg, borderRadius: 20, padding: "18px 22px", border: `2px solid ${styles.border}40`, margin: "14px 0"}}>
             <div style={{display: "flex", gap: 10, alignItems: "flex-start"}}>
-              <span style={{fontSize: 20, flexShrink: 0, lineHeight: 1.4}}>{styles.icon}</span>
+              <div style={{flexShrink: 0, color: styles.color, display: "flex", alignItems: "center"}}><Icon name={styles.icon} size={22} strokeWidth={2}/></div>
               <div style={{flex: 1, minWidth: 0}}>
                 {title && <div style={{fontFamily: T.sans, fontSize: 13, fontWeight: 800, color: styles.color, marginBottom: 6, letterSpacing: "0.02em"}}>{title}</div>}
                 <div style={{fontFamily: T.sans, fontSize: 14, lineHeight: 1.85, color: T.primary, fontWeight: 500}}>{children}</div>
@@ -6382,16 +6753,16 @@ export default function App() {
             </p>
             <div style={{display: "grid", gap: 12}}>
               {[
-                { icon: "📧", title: "メールアドレス", desc: "Gmail（〜@gmail.com）や、お使いの〜@docomo.ne.jp、〜@ezweb.ne.jp、〜@softbank.ne.jpなど。確認メールを受け取れるアドレスならOK。" },
-                { icon: "📱", title: "スマホかパソコン", desc: "どちらか1つで大丈夫。スマホの方がアプリでサクサク使えるのでおすすめ。" },
-                { icon: "🏦", title: "銀行口座の情報", desc: "報酬の振込先として後で必要になります。今すぐではなく、案件が完了する頃に登録すればOK。" },
-                { icon: "🆔", title: "本人確認書類（後でOK）", desc: "運転免許証・マイナンバーカード・パスポートのいずれか1つ。撮影してアップロードするので手元に。" },
+                { icon: "email", title: "メールアドレス", desc: "Gmail（〜@gmail.com）や、お使いの〜@docomo.ne.jp、〜@ezweb.ne.jp、〜@softbank.ne.jpなど。確認メールを受け取れるアドレスならOK。" },
+                { icon: "phone", title: "スマホかパソコン", desc: "どちらか1つで大丈夫。スマホの方がアプリでサクサク使えるのでおすすめ。" },
+                { icon: "bank", title: "銀行口座の情報", desc: "報酬の振込先として後で必要になります。今すぐではなく、案件が完了する頃に登録すればOK。" },
+                { icon: "id", title: "本人確認書類（後でOK）", desc: "運転免許証・マイナンバーカード・パスポートのいずれか1つ。撮影してアップロードするので手元に。" },
               ].map(item => (
                 <div key={item.title} style={{
                   background: T.white, borderRadius: 22, padding: "20px 24px",
                   border: `2px solid ${T.borderLight}`, display: "grid", gridTemplateColumns: "auto 1fr", gap: 16, alignItems: "flex-start",
                 }}>
-                  <div style={{fontSize: 28, lineHeight: 1.2}}>{item.icon}</div>
+                  <div style={{color: T.pink, display: "flex", alignItems: "center", justifyContent: "center", width: 44, height: 44, borderRadius: 12, background: T.pinkBg}}><Icon name={item.icon} size={26} strokeWidth={2}/></div>
                   <div>
                     <div style={{fontFamily: T.sans, fontSize: 15, fontWeight: 700, color: T.primary, marginBottom: 4}}>{item.title}</div>
                     <div style={{fontFamily: T.sans, fontSize: 13, lineHeight: 1.8, color: T.secondary, fontWeight: 500}}>{item.desc}</div>
@@ -7944,7 +8315,11 @@ export default function App() {
                     border: "none", cursor: "pointer",
                     fontFamily: T.sans, fontSize: 13, fontWeight: 700,
                     letterSpacing: "0.02em", transition: "all 0.2s",
-                  }}>{t.l}</button>
+                    display: "flex", alignItems: "center", gap: 6,
+                  }}>
+                  <Icon name={t.icon} size={16} strokeWidth={2}/>
+                  {t.l}
+                </button>
               ))}
             </div>
           )}
@@ -7994,12 +8369,14 @@ export default function App() {
                 }}
               >
                 <div style={{
-                  fontSize: 22,
                   transition: "transform 0.2s",
                   transform: active ? "scale(1.15)" : "scale(1)",
-                  filter: active ? "none" : "grayscale(0.3)",
-                  opacity: active ? 1 : 0.6,
-                }}>{t.icon}</div>
+                  opacity: active ? 1 : 0.55,
+                  color: active ? T.pink : T.tertiary,
+                  display: "flex",
+                }}>
+                  <Icon name={t.icon} size={24} strokeWidth={active ? 2.2 : 2}/>
+                </div>
                 <div style={{
                   fontFamily: T.sans, fontSize: 10, fontWeight: 700,
                   color: active ? T.pink : T.tertiary,
