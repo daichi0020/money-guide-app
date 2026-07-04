@@ -730,6 +730,15 @@ const T = {
 // ─── APP ────────────────────────────────────────────────
 export default function App() {
   const [tab, setTab] = useState("home");
+  const [isMobile, setIsMobile] = useState(typeof window !== "undefined" && window.innerWidth < 768);
+
+  // ウィンドウ幅を監視してスマホ/PC判定
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const [quizStep, setQuizStep] = useState(0);
   const [quizAns, setQuizAns] = useState({});
   const [quizResult, setQuizResult] = useState(null);
@@ -896,7 +905,11 @@ export default function App() {
   );
 
   const TABS = [
-    {id:"home",l:"Home"},{id:"job",l:"副業"},{id:"tax",l:"確定申告"},{id:"nisa",l:"NISA"},{id:"chat",l:"AI"}
+    {id:"home",l:"Home",icon:"🏠"},
+    {id:"job",l:"副業",icon:"💼"},
+    {id:"tax",l:"確定申告",icon:"📊"},
+    {id:"nisa",l:"NISA",icon:"💰"},
+    {id:"chat",l:"AI",icon:"🤖"}
   ];
 
   // ─── HOME ──────────────────────────────────────────
@@ -7898,7 +7911,7 @@ export default function App() {
 
   // ─── RENDER ──────────────────────────────────────────
   return (
-    <div style={{fontFamily: T.sans, background: T.soft, minHeight: "100vh", color: T.primary, paddingTop: 64}}>
+    <div style={{fontFamily: T.sans, background: T.soft, minHeight: "100vh", color: T.primary, paddingTop: 64, paddingBottom: isMobile ? 76 : 0}}>
       {/* Top Nav */}
       <nav style={{
         position: "fixed", top: 0, left: 0, right: 0, height: 64, zIndex: 100,
@@ -7919,19 +7932,22 @@ export default function App() {
             </div>
             <span style={{color: T.primary}}>Money<span style={{color: T.pink}}>Guide</span></span>
           </button>
-          <div style={{display: "flex", gap: 4}}>
-            {TABS.map(t=>(
-              <button key={t.id} onClick={()=>{setTab(t.id); if(t.id!=="job"){setQuizResult(null); setQuizStep(0); setSelectedJob(null); setSelectedStep(null); setShowUnder20(false); setShowGuide(null);}}}
-                style={{
-                  padding: "8px 16px", borderRadius: 980,
-                  background: tab===t.id?T.pink:"transparent",
-                  color: tab===t.id?T.white:T.primary,
-                  border: "none", cursor: "pointer",
-                  fontFamily: T.sans, fontSize: 13, fontWeight: 700,
-                  letterSpacing: "0.02em", transition: "all 0.2s",
-                }}>{t.l}</button>
-            ))}
-          </div>
+          {/* PC版のみ：上部にタブを表示 */}
+          {!isMobile && (
+            <div style={{display: "flex", gap: 4}}>
+              {TABS.map(t=>(
+                <button key={t.id} onClick={()=>{setTab(t.id); if(t.id!=="job"){setQuizResult(null); setQuizStep(0); setSelectedJob(null); setSelectedStep(null); setShowUnder20(false); setShowGuide(null);}}}
+                  style={{
+                    padding: "8px 16px", borderRadius: 980,
+                    background: tab===t.id?T.pink:"transparent",
+                    color: tab===t.id?T.white:T.primary,
+                    border: "none", cursor: "pointer",
+                    fontFamily: T.sans, fontSize: 13, fontWeight: 700,
+                    letterSpacing: "0.02em", transition: "all 0.2s",
+                  }}>{t.l}</button>
+              ))}
+            </div>
+          )}
         </div>
       </nav>
 
@@ -7941,6 +7957,66 @@ export default function App() {
       {tab==="tax" && <TaxView/>}
       {tab==="nisa" && <NisaView/>}
       {tab==="chat" && <ChatView/>}
+
+      {/* Mobile Bottom Nav */}
+      {isMobile && (
+        <nav style={{
+          position: "fixed", bottom: 0, left: 0, right: 0, height: 68, zIndex: 100,
+          background: "rgba(255, 249, 242, 0.96)",
+          backdropFilter: "saturate(180%) blur(20px)",
+          WebkitBackdropFilter: "saturate(180%) blur(20px)",
+          borderTop: `2px solid ${T.borderLight}`,
+          display: "flex", alignItems: "stretch",
+          paddingBottom: "env(safe-area-inset-bottom)",
+        }}>
+          {TABS.map(t=>{
+            const active = tab===t.id;
+            return (
+              <button
+                key={t.id}
+                onClick={()=>{
+                  setTab(t.id);
+                  if(t.id!=="job"){
+                    setQuizResult(null); setQuizStep(0); setSelectedJob(null);
+                    setSelectedStep(null); setShowUnder20(false); setShowGuide(null);
+                  }
+                  // ページトップにスクロール
+                  window.scrollTo({top: 0, behavior: "smooth"});
+                }}
+                style={{
+                  flex: 1,
+                  display: "flex", flexDirection: "column",
+                  alignItems: "center", justifyContent: "center", gap: 2,
+                  background: "transparent", border: "none", cursor: "pointer",
+                  padding: "8px 4px",
+                  transition: "all 0.2s",
+                  WebkitTapHighlightColor: "transparent",
+                }}
+              >
+                <div style={{
+                  fontSize: 22,
+                  transition: "transform 0.2s",
+                  transform: active ? "scale(1.15)" : "scale(1)",
+                  filter: active ? "none" : "grayscale(0.3)",
+                  opacity: active ? 1 : 0.6,
+                }}>{t.icon}</div>
+                <div style={{
+                  fontFamily: T.sans, fontSize: 10, fontWeight: 700,
+                  color: active ? T.pink : T.tertiary,
+                  letterSpacing: "0.02em",
+                  transition: "color 0.2s",
+                }}>{t.l}</div>
+                {active && (
+                  <div style={{
+                    position: "absolute", top: 0, height: 3, width: 24,
+                    background: T.pink, borderRadius: "0 0 3px 3px",
+                  }}/>
+                )}
+              </button>
+            );
+          })}
+        </nav>
+      )}
 
       {/* Footer */}
       <footer style={{padding: "48px 24px", borderTop: `1px solid ${T.borderLight}`, background: T.soft}}>
