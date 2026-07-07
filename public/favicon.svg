@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- ナル: 黄色いコインに緑の芽 -->
+  <!-- Background circle (coin) -->
+  <circle cx="50" cy="58" r="35" fill="#F5C265" stroke="#5A4A3D" stroke-width="4"/>
+  
+  <!-- Coin stitching (dashed inner circle) -->
+  <circle cx="50" cy="58" r="27" fill="none" stroke="#8B6E4F" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.5"/>
+  
+  <!-- Left cheek -->
+  <circle cx="34" cy="62" r="4" fill="#F5A5B3" opacity="0.8"/>
+  <!-- Right cheek -->
+  <circle cx="66" cy="62" r="4" fill="#F5A5B3" opacity="0.8"/>
+  
+  <!-- Left eye -->
+  <path d="M 40 54 Q 42 51, 44 54" fill="none" stroke="#5A4A3D" stroke-width="3" stroke-linecap="round"/>
+  <!-- Right eye -->
+  <path d="M 56 54 Q 58 51, 60 54" fill="none" stroke="#5A4A3D" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Smile -->
+  <path d="M 44 66 Q 50 71, 56 66" fill="none" stroke="#5A4A3D" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Sprout stem -->
+  <line x1="50" y1="24" x2="50" y2="12" stroke="#5A4A3D" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Left leaf -->
+  <path d="M 50 15 Q 42 10, 40 5 Q 48 10, 50 15 Z" fill="#8BC470" stroke="#5A4A3D" stroke-width="2.5" stroke-linejoin="round"/>
+  
+  <!-- Right leaf -->
+  <path d="M 50 13 Q 58 8, 60 3 Q 52 8, 50 13 Z" fill="#8BC470" stroke="#5A4A3D" stroke-width="2.5" stroke-linejoin="round"/>
+</svg>
