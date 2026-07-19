@@ -1472,7 +1472,23 @@ export default function App() {
             <div style={{display: "flex", justifyContent: "center", marginBottom: 20}}>
               <Character pose="wave" size={140}/>
             </div>
-            <Eyebrow>Complete Guide</Eyebrow>
+            <div style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: T.pinkSoft, borderRadius: 12,
+                padding: "8px 16px", marginBottom: 16,
+                border: `2px solid ${T.pink}30`,
+              }}>
+                <span style={{
+                  fontFamily: T.sans, fontSize: 10, fontWeight: 800,
+                  background: T.pink, color: T.white,
+                  padding: "3px 8px", borderRadius: 4,
+                  letterSpacing: "0.05em",
+                }}>PR</span>
+                <span style={{fontFamily: T.sans, fontSize: 12, color: T.secondary, fontWeight: 500}}>
+                  このガイドはアフィリエイト広告を含みます
+                </span>
+              </div>
+              <Eyebrow>Complete Guide</Eyebrow>
             <h1 style={{fontFamily: T.sans, fontSize: "clamp(32px, 6vw, 56px)", fontWeight: 800, letterSpacing: "-0.01em", margin: "0 0 16px", lineHeight: 1.15, color: T.primary}}>
               {title}<br/><span style={{color: T.pink}}>完全ガイド</span>
             </h1>
@@ -1607,6 +1623,22 @@ export default function App() {
             <div style={{maxWidth: 760, margin: "0 auto"}}>
               <div style={{display: "flex", justifyContent: "center", marginBottom: 20}}>
                 <Character pose="wave" size={140}/>
+              </div>
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: T.pinkSoft, borderRadius: 12,
+                padding: "8px 16px", marginBottom: 16,
+                border: `2px solid ${T.pink}30`,
+              }}>
+                <span style={{
+                  fontFamily: T.sans, fontSize: 10, fontWeight: 800,
+                  background: T.pink, color: T.white,
+                  padding: "3px 8px", borderRadius: 4,
+                  letterSpacing: "0.05em",
+                }}>PR</span>
+                <span style={{fontFamily: T.sans, fontSize: 12, color: T.secondary, fontWeight: 500}}>
+                  このガイドはアフィリエイト広告を含みます
+                </span>
               </div>
               <Eyebrow>Complete Guide</Eyebrow>
               <h1 style={{fontFamily: T.sans, fontSize: "clamp(32px, 6vw, 56px)", fontWeight: 800, letterSpacing: "-0.01em", margin: "0 0 16px", lineHeight: 1.15, color: T.primary}}>
@@ -1879,6 +1911,22 @@ export default function App() {
               <div style={{display: "flex", justifyContent: "center", marginBottom: 20}}>
                 <Character pose="wave" size={140}/>
               </div>
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: T.pinkSoft, borderRadius: 12,
+                padding: "8px 16px", marginBottom: 16,
+                border: `2px solid ${T.pink}30`,
+              }}>
+                <span style={{
+                  fontFamily: T.sans, fontSize: 10, fontWeight: 800,
+                  background: T.pink, color: T.white,
+                  padding: "3px 8px", borderRadius: 4,
+                  letterSpacing: "0.05em",
+                }}>PR</span>
+                <span style={{fontFamily: T.sans, fontSize: 12, color: T.secondary, fontWeight: 500}}>
+                  このガイドはアフィリエイト広告を含みます
+                </span>
+              </div>
               <Eyebrow>Complete Guide</Eyebrow>
               <h1 style={{fontFamily: T.sans, fontSize: "clamp(32px, 6vw, 56px)", fontWeight: 800, letterSpacing: "-0.01em", margin: "0 0 16px", lineHeight: 1.15, color: T.primary}}>
                 Yahoo!フリマ<br/><span style={{color: T.pink}}>完全ガイド</span>
@@ -2149,6 +2197,22 @@ export default function App() {
             <div style={{maxWidth: 760, margin: "0 auto"}}>
               <div style={{display: "flex", justifyContent: "center", marginBottom: 20}}>
                 <Character pose="wave" size={140}/>
+              </div>
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: T.pinkSoft, borderRadius: 12,
+                padding: "8px 16px", marginBottom: 16,
+                border: `2px solid ${T.pink}30`,
+              }}>
+                <span style={{
+                  fontFamily: T.sans, fontSize: 10, fontWeight: 800,
+                  background: T.pink, color: T.white,
+                  padding: "3px 8px", borderRadius: 4,
+                  letterSpacing: "0.05em",
+                }}>PR</span>
+                <span style={{fontFamily: T.sans, fontSize: 12, color: T.secondary, fontWeight: 500}}>
+                  このガイドはアフィリエイト広告を含みます
+                </span>
               </div>
               <Eyebrow>Complete Guide</Eyebrow>
               <h1 style={{fontFamily: T.sans, fontSize: "clamp(32px, 6vw, 56px)", fontWeight: 800, letterSpacing: "-0.01em", margin: "0 0 16px", lineHeight: 1.15, color: T.primary}}>
@@ -2429,6 +2493,22 @@ export default function App() {
             <div style={{maxWidth: 760, margin: "0 auto"}}>
               <div style={{display: "flex", justifyContent: "center", marginBottom: 20}}>
                 <Character pose="wave" size={140}/>
+              </div>
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: T.pinkSoft, borderRadius: 12,
+                padding: "8px 16px", marginBottom: 16,
+                border: `2px solid ${T.pink}30`,
+              }}>
+                <span style={{
+                  fontFamily: T.sans, fontSize: 10, fontWeight: 800,
+                  background: T.pink, color: T.white,
+                  padding: "3px 8px", borderRadius: 4,
+                  letterSpacing: "0.05em",
+                }}>PR</span>
+                <span style={{fontFamily: T.sans, fontSize: 12, color: T.secondary, fontWeight: 500}}>
+                  このガイドはアフィリエイト広告を含みます
+                </span>
               </div>
               <Eyebrow>Complete Guide</Eyebrow>
               <h1 style={{fontFamily: T.sans, fontSize: "clamp(32px, 6vw, 56px)", fontWeight: 800, letterSpacing: "-0.01em", margin: "0 0 16px", lineHeight: 1.15, color: T.primary}}>
@@ -2721,6 +2801,22 @@ export default function App() {
               <div style={{display: "flex", justifyContent: "center", marginBottom: 20}}>
                 <Character pose="wave" size={140}/>
               </div>
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: T.pinkSoft, borderRadius: 12,
+                padding: "8px 16px", marginBottom: 16,
+                border: `2px solid ${T.pink}30`,
+              }}>
+                <span style={{
+                  fontFamily: T.sans, fontSize: 10, fontWeight: 800,
+                  background: T.pink, color: T.white,
+                  padding: "3px 8px", borderRadius: 4,
+                  letterSpacing: "0.05em",
+                }}>PR</span>
+                <span style={{fontFamily: T.sans, fontSize: 12, color: T.secondary, fontWeight: 500}}>
+                  このガイドはアフィリエイト広告を含みます
+                </span>
+              </div>
               <Eyebrow>Complete Guide</Eyebrow>
               <h1 style={{fontFamily: T.sans, fontSize: "clamp(32px, 6vw, 56px)", fontWeight: 800, letterSpacing: "-0.01em", margin: "0 0 16px", lineHeight: 1.15, color: T.primary}}>
                 Wolt<br/><span style={{color: T.pink}}>完全ガイド</span>
@@ -2987,6 +3083,22 @@ export default function App() {
               <div style={{display: "flex", justifyContent: "center", marginBottom: 20}}>
                 <Character pose="wave" size={140}/>
               </div>
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: T.pinkSoft, borderRadius: 12,
+                padding: "8px 16px", marginBottom: 16,
+                border: `2px solid ${T.pink}30`,
+              }}>
+                <span style={{
+                  fontFamily: T.sans, fontSize: 10, fontWeight: 800,
+                  background: T.pink, color: T.white,
+                  padding: "3px 8px", borderRadius: 4,
+                  letterSpacing: "0.05em",
+                }}>PR</span>
+                <span style={{fontFamily: T.sans, fontSize: 12, color: T.secondary, fontWeight: 500}}>
+                  このガイドはアフィリエイト広告を含みます
+                </span>
+              </div>
               <Eyebrow>Complete Guide</Eyebrow>
               <h1 style={{fontFamily: T.sans, fontSize: "clamp(32px, 6vw, 56px)", fontWeight: 800, letterSpacing: "-0.01em", margin: "0 0 16px", lineHeight: 1.15, color: T.primary}}>
                 レバテックフリーランス<br/><span style={{color: T.pink}}>完全ガイド</span>
@@ -3252,6 +3364,22 @@ export default function App() {
             <div style={{maxWidth: 760, margin: "0 auto"}}>
               <div style={{display: "flex", justifyContent: "center", marginBottom: 20}}>
                 <Character pose="wave" size={140}/>
+              </div>
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: T.pinkSoft, borderRadius: 12,
+                padding: "8px 16px", marginBottom: 16,
+                border: `2px solid ${T.pink}30`,
+              }}>
+                <span style={{
+                  fontFamily: T.sans, fontSize: 10, fontWeight: 800,
+                  background: T.pink, color: T.white,
+                  padding: "3px 8px", borderRadius: 4,
+                  letterSpacing: "0.05em",
+                }}>PR</span>
+                <span style={{fontFamily: T.sans, fontSize: 12, color: T.secondary, fontWeight: 500}}>
+                  このガイドはアフィリエイト広告を含みます
+                </span>
               </div>
               <Eyebrow>Complete Guide</Eyebrow>
               <h1 style={{fontFamily: T.sans, fontSize: "clamp(32px, 6vw, 56px)", fontWeight: 800, letterSpacing: "-0.01em", margin: "0 0 16px", lineHeight: 1.15, color: T.primary}}>
@@ -3524,6 +3652,22 @@ export default function App() {
             <div style={{maxWidth: 760, margin: "0 auto"}}>
               <div style={{display: "flex", justifyContent: "center", marginBottom: 20}}>
                 <Character pose="wave" size={140}/>
+              </div>
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: T.pinkSoft, borderRadius: 12,
+                padding: "8px 16px", marginBottom: 16,
+                border: `2px solid ${T.pink}30`,
+              }}>
+                <span style={{
+                  fontFamily: T.sans, fontSize: 10, fontWeight: 800,
+                  background: T.pink, color: T.white,
+                  padding: "3px 8px", borderRadius: 4,
+                  letterSpacing: "0.05em",
+                }}>PR</span>
+                <span style={{fontFamily: T.sans, fontSize: 12, color: T.secondary, fontWeight: 500}}>
+                  このガイドはアフィリエイト広告を含みます
+                </span>
               </div>
               <Eyebrow>Complete Guide</Eyebrow>
               <h1 style={{fontFamily: T.sans, fontSize: "clamp(32px, 6vw, 56px)", fontWeight: 800, letterSpacing: "-0.01em", margin: "0 0 16px", lineHeight: 1.15, color: T.primary}}>
@@ -3806,6 +3950,22 @@ export default function App() {
               <div style={{display: "flex", justifyContent: "center", marginBottom: 20}}>
                 <Character pose="wave" size={140}/>
               </div>
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: T.pinkSoft, borderRadius: 12,
+                padding: "8px 16px", marginBottom: 16,
+                border: `2px solid ${T.pink}30`,
+              }}>
+                <span style={{
+                  fontFamily: T.sans, fontSize: 10, fontWeight: 800,
+                  background: T.pink, color: T.white,
+                  padding: "3px 8px", borderRadius: 4,
+                  letterSpacing: "0.05em",
+                }}>PR</span>
+                <span style={{fontFamily: T.sans, fontSize: 12, color: T.secondary, fontWeight: 500}}>
+                  このガイドはアフィリエイト広告を含みます
+                </span>
+              </div>
               <Eyebrow>Complete Guide</Eyebrow>
               <h1 style={{fontFamily: T.sans, fontSize: "clamp(32px, 6vw, 56px)", fontWeight: 800, letterSpacing: "-0.01em", margin: "0 0 16px", lineHeight: 1.15, color: T.primary}}>
                 マナリンク<br/><span style={{color: T.pink}}>完全ガイド</span>
@@ -4076,6 +4236,22 @@ export default function App() {
               <div style={{display: "flex", justifyContent: "center", marginBottom: 20}}>
                 <Character pose="wave" size={140}/>
               </div>
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: T.pinkSoft, borderRadius: 12,
+                padding: "8px 16px", marginBottom: 16,
+                border: `2px solid ${T.pink}30`,
+              }}>
+                <span style={{
+                  fontFamily: T.sans, fontSize: 10, fontWeight: 800,
+                  background: T.pink, color: T.white,
+                  padding: "3px 8px", borderRadius: 4,
+                  letterSpacing: "0.05em",
+                }}>PR</span>
+                <span style={{fontFamily: T.sans, fontSize: 12, color: T.secondary, fontWeight: 500}}>
+                  このガイドはアフィリエイト広告を含みます
+                </span>
+              </div>
               <Eyebrow>Complete Guide</Eyebrow>
               <h1 style={{fontFamily: T.sans, fontSize: "clamp(32px, 6vw, 56px)", fontWeight: 800, letterSpacing: "-0.01em", margin: "0 0 16px", lineHeight: 1.15, color: T.primary}}>
                 まなぶてらす<br/><span style={{color: T.pink}}>完全ガイド</span>
@@ -4333,6 +4509,22 @@ export default function App() {
             <div style={{maxWidth: 760, margin: "0 auto"}}>
               <div style={{display: "flex", justifyContent: "center", marginBottom: 20}}>
                 <Character pose="wave" size={140}/>
+              </div>
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: T.pinkSoft, borderRadius: 12,
+                padding: "8px 16px", marginBottom: 16,
+                border: `2px solid ${T.pink}30`,
+              }}>
+                <span style={{
+                  fontFamily: T.sans, fontSize: 10, fontWeight: 800,
+                  background: T.pink, color: T.white,
+                  padding: "3px 8px", borderRadius: 4,
+                  letterSpacing: "0.05em",
+                }}>PR</span>
+                <span style={{fontFamily: T.sans, fontSize: 12, color: T.secondary, fontWeight: 500}}>
+                  このガイドはアフィリエイト広告を含みます
+                </span>
               </div>
               <Eyebrow>Complete Guide</Eyebrow>
               <h1 style={{fontFamily: T.sans, fontSize: "clamp(32px, 6vw, 56px)", fontWeight: 800, letterSpacing: "-0.01em", margin: "0 0 16px", lineHeight: 1.15, color: T.primary}}>
@@ -4613,6 +4805,22 @@ export default function App() {
               <div style={{display: "flex", justifyContent: "center", marginBottom: 20}}>
                 <Character pose="wave" size={140}/>
               </div>
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: T.pinkSoft, borderRadius: 12,
+                padding: "8px 16px", marginBottom: 16,
+                border: `2px solid ${T.pink}30`,
+              }}>
+                <span style={{
+                  fontFamily: T.sans, fontSize: 10, fontWeight: 800,
+                  background: T.pink, color: T.white,
+                  padding: "3px 8px", borderRadius: 4,
+                  letterSpacing: "0.05em",
+                }}>PR</span>
+                <span style={{fontFamily: T.sans, fontSize: 12, color: T.secondary, fontWeight: 500}}>
+                  このガイドはアフィリエイト広告を含みます
+                </span>
+              </div>
               <Eyebrow>Complete Guide</Eyebrow>
               <h1 style={{fontFamily: T.sans, fontSize: "clamp(32px, 6vw, 56px)", fontWeight: 800, letterSpacing: "-0.01em", margin: "0 0 16px", lineHeight: 1.15, color: T.primary}}>
                 家庭教師のファースト<br/><span style={{color: T.pink}}>完全ガイド</span>
@@ -4877,6 +5085,22 @@ export default function App() {
             <div style={{maxWidth: 760, margin: "0 auto"}}>
               <div style={{display: "flex", justifyContent: "center", marginBottom: 20}}>
                 <Character pose="wave" size={140}/>
+              </div>
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: T.pinkSoft, borderRadius: 12,
+                padding: "8px 16px", marginBottom: 16,
+                border: `2px solid ${T.pink}30`,
+              }}>
+                <span style={{
+                  fontFamily: T.sans, fontSize: 10, fontWeight: 800,
+                  background: T.pink, color: T.white,
+                  padding: "3px 8px", borderRadius: 4,
+                  letterSpacing: "0.05em",
+                }}>PR</span>
+                <span style={{fontFamily: T.sans, fontSize: 12, color: T.secondary, fontWeight: 500}}>
+                  このガイドはアフィリエイト広告を含みます
+                </span>
               </div>
               <Eyebrow>Complete Guide</Eyebrow>
               <h1 style={{fontFamily: T.sans, fontSize: "clamp(32px, 6vw, 56px)", fontWeight: 800, letterSpacing: "-0.01em", margin: "0 0 16px", lineHeight: 1.15, color: T.primary}}>
@@ -5392,6 +5616,22 @@ export default function App() {
               <div style={{display: "flex", justifyContent: "center", marginBottom: 20}}>
                 <Character pose="wave" size={140}/>
               </div>
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: T.pinkSoft, borderRadius: 12,
+                padding: "8px 16px", marginBottom: 16,
+                border: `2px solid ${T.pink}30`,
+              }}>
+                <span style={{
+                  fontFamily: T.sans, fontSize: 10, fontWeight: 800,
+                  background: T.pink, color: T.white,
+                  padding: "3px 8px", borderRadius: 4,
+                  letterSpacing: "0.05em",
+                }}>PR</span>
+                <span style={{fontFamily: T.sans, fontSize: 12, color: T.secondary, fontWeight: 500}}>
+                  このガイドはアフィリエイト広告を含みます
+                </span>
+              </div>
               <Eyebrow>Complete Guide</Eyebrow>
               <h1 style={{fontFamily: T.sans, fontSize: "clamp(32px, 6vw, 56px)", fontWeight: 800, letterSpacing: "-0.01em", margin: "0 0 16px", lineHeight: 1.15, color: T.primary}}>
                 ランサーズ<br/><span style={{color: T.pink}}>完全ガイド</span>
@@ -5828,6 +6068,22 @@ export default function App() {
               <div style={{display: "flex", justifyContent: "center", marginBottom: 20}}>
                 <Character pose="wave" size={140}/>
               </div>
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: T.pinkSoft, borderRadius: 12,
+                padding: "8px 16px", marginBottom: 16,
+                border: `2px solid ${T.pink}30`,
+              }}>
+                <span style={{
+                  fontFamily: T.sans, fontSize: 10, fontWeight: 800,
+                  background: T.pink, color: T.white,
+                  padding: "3px 8px", borderRadius: 4,
+                  letterSpacing: "0.05em",
+                }}>PR</span>
+                <span style={{fontFamily: T.sans, fontSize: 12, color: T.secondary, fontWeight: 500}}>
+                  このガイドはアフィリエイト広告を含みます
+                </span>
+              </div>
               <Eyebrow>Complete Guide</Eyebrow>
               <h1 style={{fontFamily: T.sans, fontSize: "clamp(32px, 6vw, 56px)", fontWeight: 800, letterSpacing: "-0.01em", margin: "0 0 16px", lineHeight: 1.15, color: T.primary}}>
                 Uber Eats 配達員<br/><span style={{color: T.pink}}>完全ガイド</span>
@@ -6253,6 +6509,22 @@ export default function App() {
             <div style={{maxWidth: 760, margin: "0 auto"}}>
               <div style={{display: "flex", justifyContent: "center", marginBottom: 20}}>
                 <Character pose="wave" size={140}/>
+              </div>
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: T.pinkSoft, borderRadius: 12,
+                padding: "8px 16px", marginBottom: 16,
+                border: `2px solid ${T.pink}30`,
+              }}>
+                <span style={{
+                  fontFamily: T.sans, fontSize: 10, fontWeight: 800,
+                  background: T.pink, color: T.white,
+                  padding: "3px 8px", borderRadius: 4,
+                  letterSpacing: "0.05em",
+                }}>PR</span>
+                <span style={{fontFamily: T.sans, fontSize: 12, color: T.secondary, fontWeight: 500}}>
+                  このガイドはアフィリエイト広告を含みます
+                </span>
               </div>
               <Eyebrow>Complete Guide</Eyebrow>
               <h1 style={{fontFamily: T.sans, fontSize: "clamp(32px, 6vw, 56px)", fontWeight: 800, letterSpacing: "-0.01em", margin: "0 0 16px", lineHeight: 1.15, color: T.primary}}>
@@ -6713,6 +6985,22 @@ export default function App() {
             <div style={{maxWidth: 760, margin: "0 auto"}}>
               <div style={{display: "flex", justifyContent: "center", marginBottom: 20}}>
                 <Character pose="wave" size={140}/>
+              </div>
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: T.pinkSoft, borderRadius: 12,
+                padding: "8px 16px", marginBottom: 16,
+                border: `2px solid ${T.pink}30`,
+              }}>
+                <span style={{
+                  fontFamily: T.sans, fontSize: 10, fontWeight: 800,
+                  background: T.pink, color: T.white,
+                  padding: "3px 8px", borderRadius: 4,
+                  letterSpacing: "0.05em",
+                }}>PR</span>
+                <span style={{fontFamily: T.sans, fontSize: 12, color: T.secondary, fontWeight: 500}}>
+                  このガイドはアフィリエイト広告を含みます
+                </span>
               </div>
               <Eyebrow>Complete Guide</Eyebrow>
               <h1 style={{fontFamily: T.sans, fontSize: "clamp(32px, 6vw, 56px)", fontWeight: 800, letterSpacing: "-0.01em", margin: "0 0 16px", lineHeight: 1.15, color: T.primary}}>
@@ -7500,7 +7788,7 @@ export default function App() {
                       <a
                         href={listing.url}
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel="noopener noreferrer sponsored"
                         style={{
                           display: "inline-flex", alignItems: "center", gap: 8,
                           padding: "12px 22px", borderRadius: 980,
@@ -7519,6 +7807,14 @@ export default function App() {
                           <path d="M8 7H17V16"/>
                         </svg>
                       </a>
+                      {/* PR表記（ステマ規制対応） */}
+                      <span style={{
+                        display: "inline-flex", alignItems: "center", gap: 4,
+                        fontFamily: T.sans, fontSize: 10, fontWeight: 800,
+                        color: T.tertiary, letterSpacing: "0.05em",
+                        padding: "4px 8px", borderRadius: 6,
+                        background: T.mute, border: `1px solid ${T.borderLight}`,
+                      }} title="広告主とアフィリエイト提携している可能性があります">PR</span>
                       {({"クラウドワークス":"crowdworks","メルカリ":"mercari","Uber Eats":"ubereats","ランサーズ":"lancers","ココナラ":"coconala","ラクマ":"rakuma","Yahoo!フリマ":"yahoofrima","シュフティ":"shufti","出前館":"demaecan","Wolt":"wolt","レバテックフリーランス":"levtech","Behance":"behance","YouTube Studio":"youtube_studio","マナリンク":"manalink","まなぶてらす":"manatera","家庭教師のトライ":"try_teacher","家庭教師のファースト":"first_teacher"})[listing.name] && (
                         <button
                           onClick={()=>setShowGuide(({"クラウドワークス":"crowdworks","メルカリ":"mercari","Uber Eats":"ubereats","ランサーズ":"lancers","ココナラ":"coconala","ラクマ":"rakuma","Yahoo!フリマ":"yahoofrima","シュフティ":"shufti","出前館":"demaecan","Wolt":"wolt","レバテックフリーランス":"levtech","Behance":"behance","YouTube Studio":"youtube_studio","マナリンク":"manalink","まなぶてらす":"manatera","家庭教師のトライ":"try_teacher","家庭教師のファースト":"first_teacher"})[listing.name])}
@@ -8397,10 +8693,51 @@ export default function App() {
 
       {/* Footer */}
       <footer style={{padding: "48px 24px", borderTop: `1px solid ${T.borderLight}`, background: T.soft}}>
-        <div style={{maxWidth: 980, margin: "0 auto", textAlign: "center"}}>
-          <div style={{fontFamily: T.sans, color: T.pink, fontSize: 18, color: T.tertiary, marginBottom: 8}}>MoneyGuide</div>
-          <div style={{fontFamily: T.sans, fontSize: 12, color: T.tertiary, letterSpacing: "-0.01em"}}>
-            本サービスは情報提供を目的としており、税務・投資の最終判断は専門家へご相談ください。
+        <div style={{maxWidth: 760, margin: "0 auto"}}>
+          {/* ロゴ */}
+          <div style={{textAlign: "center", marginBottom: 24}}>
+            <div style={{display: "inline-flex", alignItems: "center", gap: 8, marginBottom: 8}}>
+              <Character pose="default" size={36}/>
+              <span style={{fontFamily: T.sans, fontWeight: 800, fontSize: 20, letterSpacing: "0.02em"}}>
+                <span style={{color: T.primary}}>Money</span><span style={{color: T.pink}}>Guide</span>
+              </span>
+            </div>
+            <div style={{fontFamily: T.sans, fontSize: 12, color: T.tertiary, letterSpacing: "-0.01em"}}>
+              お金のわからないを、ぜんぶ解消🌱
+            </div>
+          </div>
+
+          {/* PR表記（ステマ規制対応） */}
+          <div style={{
+            background: T.pinkSoft, borderRadius: 16, padding: "16px 20px",
+            border: `2px solid ${T.pink}30`, marginBottom: 20,
+          }}>
+            <div style={{
+              display: "inline-block", background: T.pink, color: T.white,
+              fontFamily: T.sans, fontSize: 11, fontWeight: 800, letterSpacing: "0.05em",
+              padding: "3px 10px", borderRadius: 6, marginBottom: 10,
+            }}>PR</div>
+            <div style={{fontFamily: T.sans, fontSize: 12, lineHeight: 1.85, color: T.secondary, fontWeight: 500}}>
+              当サイトはアフィリエイトプログラムに参加しており、掲載サービスへのリンクを経由して読者が登録・契約された場合、広告主から成果報酬を得ることがあります。<br/>
+              紹介するサービスは、運営者が実際に調査・検討した上で選定しています。ご利用にあたっては、必ずご自身で公式サイトの情報をご確認ください。
+            </div>
+          </div>
+
+          {/* 情報提供の注意 */}
+          <div style={{
+            fontFamily: T.sans, fontSize: 11, lineHeight: 1.85, color: T.tertiary,
+            textAlign: "center", fontWeight: 500,
+          }}>
+            本サービスは情報提供を目的としており、税務・投資・法律に関する最終判断は専門家へご相談ください。<br/>
+            掲載情報は執筆時点のもので、最新情報は各公式サイトでご確認ください。
+          </div>
+
+          {/* コピーライト */}
+          <div style={{
+            marginTop: 24, paddingTop: 20, borderTop: `1px solid ${T.borderLight}`,
+            fontFamily: T.sans, fontSize: 11, color: T.tertiary, textAlign: "center", letterSpacing: "0.02em",
+          }}>
+            © {new Date().getFullYear()} MoneyGuide. All rights reserved.
           </div>
         </div>
       </footer>
