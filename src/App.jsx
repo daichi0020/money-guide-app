@@ -88,8 +88,6 @@ const LISTINGS = {
       desc: "全国対応・即金性◎。配達バッグは別途購入が必要だが、案件数は最多。", url: "https://www.uber.com/jp/ja/drive/" },
     { name: "出前館", tagline: "報酬が安定", badge: "安定",
       desc: "配達単価が固定で計算しやすい。ブーストキャンペーン時の報酬がアツい。", url: "https://service.demae-can.co.jp/gig_personal/" },
-    { name: "Wolt", tagline: "サポートが手厚い", badge: "高報酬",
-      desc: "対応エリアは限定的だが報酬は高め。配達員サポートが好評。", url: "https://wolt.com/ja/jpn/courier" },
   ],
   programming: [
     { name: "クラウドワークス", tagline: "案件量で選ぶなら", badge: "初心者◎",
@@ -142,6 +140,77 @@ const LISTINGS = {
       desc: "主婦・在宅ワーカー向けの初心者OK案件が多数掲載されている。", url: "https://app.shufti.jp/" },
   ],
 };
+
+// ─── 副業用の銀行口座データ ───────────────────────
+// ※手数料・無料回数は変動します。2026年7月時点の一般的な情報です。
+const BANK_PREP = [
+  { icon: "id", name: "本人確認書類",
+    desc: "運転免許証・マイナンバーカードなど。スマホで撮影して提出します。" },
+  { icon: "phone", name: "スマートフォン",
+    desc: "本人確認の撮影と、アプリでの管理に使います。" },
+  { icon: "email", name: "メールアドレス",
+    desc: "副業用に分けておくと、通知が埋もれません。" },
+  { icon: "money", name: "既存の銀行口座",
+    desc: "初回の入金用。無くても開設はできます。" },
+];
+
+const BANK_STEPS = [
+  { n: 1, title: "銀行を選ぶ", desc: "下の比較を見て、自分の使い方に合うものを選びます。迷ったら手数料の無料回数で決めて問題ありません。" },
+  { n: 2, title: "公式サイトから申し込む", desc: "スマホで完結します。氏名・住所・職業などを入力します。所要時間は10分ほど。" },
+  { n: 3, title: "本人確認書類を提出", desc: "免許証やマイナンバーカードをスマホで撮影してアップロード。郵送不要の銀行がほとんどです。" },
+  { n: 4, title: "審査を待つ", desc: "最短で当日、通常は数営業日で完了します。結果はメールで届きます。" },
+  { n: 5, title: "口座情報を受け取る", desc: "口座番号が発行されます。キャッシュカードは後日郵送されることが多いです。" },
+  { n: 6, title: "副業サイトに登録する", desc: "各副業サイトの振込先として、この口座を設定します。これで準備完了です。" },
+];
+
+const BANKS = [
+  {
+    rank: 1, name: "住信SBIネット銀行", badge: "総合力◎",
+    tagline: "無料回数の多さで選ぶなら",
+    good: ["ATM・振込の無料回数がランク制で増える", "SBI証券との連携がスムーズ", "アプリが使いやすい"],
+    care: ["ランクを上げるには条件がある"],
+    fee: "ランクにより無料回数が変動",
+    forWho: "副業の入出金が多くなりそうな人",
+    url: "https://www.netbk.co.jp/",
+  },
+  {
+    rank: 2, name: "楽天銀行", badge: "ポイント◎",
+    tagline: "楽天をよく使うなら",
+    good: ["楽天ポイントが貯まる", "楽天証券との連携（マネーブリッジ）", "給与振込の指定で無料回数が増える"],
+    care: ["楽天サービスを使わないと旨みは薄い"],
+    fee: "取引状況により無料回数が変動",
+    forWho: "普段から楽天経済圏を使っている人",
+    url: "https://www.rakuten-bank.co.jp/",
+  },
+  {
+    rank: 3, name: "GMOあおぞらネット銀行", badge: "手数料◎",
+    tagline: "振込手数料の安さで選ぶなら",
+    good: ["他行宛の振込手数料が業界最安水準", "条件次第で無料回数が増える", "将来フリーランスになっても使いやすい"],
+    care: ["知名度が低めで、対応していないサービスもある"],
+    fee: "他行宛が安い水準",
+    forWho: "振込コストをとにかく抑えたい人",
+    url: "https://gmo-aozora.com/",
+  },
+  {
+    rank: 4, name: "PayPay銀行", badge: "連携◎",
+    tagline: "PayPayを使うなら",
+    good: ["PayPayとの連携がスムーズ", "Yahoo!系サービスと相性がいい", "口座開設が早い"],
+    care: ["無料回数は他行より控えめなことがある"],
+    fee: "条件により変動",
+    forWho: "PayPayをメインで使っている人",
+    url: "https://www.paypay-bank.co.jp/",
+  },
+  {
+    rank: 5, name: "auじぶん銀行", badge: "au経済圏",
+    tagline: "au・UQを使うなら",
+    good: ["au PAYとの連携で優遇がある", "ATM無料回数が比較的多い", "スマホ完結で開設できる"],
+    care: ["au経済圏を使わないと優遇が効きにくい"],
+    fee: "取引状況により変動",
+    forWho: "au / UQ mobile のユーザー",
+    url: "https://www.jibunbank.co.jp/",
+  },
+];
+
 
 const QUIZ = [
   { id:"time", q:"副業に使える時間は週どのくらい？",
@@ -2728,288 +2797,6 @@ export default function App() {
                 boxShadow: `0 4px 0 0 #6BA053`,
               }}>
                 出前館配達員に登録する
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M7 17L17 7"/>
-                  <path d="M8 7H17V16"/>
-                </svg>
-              </a>
-            </Card>
-          </Section>
-        </div>
-      );
-    }
-
-    // Wolt完全ガイド
-    if (showGuide === "wolt") {
-      const SectionTitle = ({eyebrow, title, num, accent = T.pink}) => (
-        <div style={{marginBottom: 24}}>
-          <Eyebrow>{eyebrow}</Eyebrow>
-          <div style={{display: "flex", alignItems: "center", gap: 14}}>
-            <div style={{
-              minWidth: 44, height: 44, borderRadius: 14, background: accent + "20", color: accent,
-              display: "flex", alignItems: "center", justifyContent: "center",
-              fontFamily: T.sans, fontWeight: 800, fontSize: 17, flexShrink: 0,
-            }}>{num}</div>
-            <h2 style={{fontFamily: T.sans, fontSize: "clamp(22px, 3.5vw, 32px)", fontWeight: 700, letterSpacing: "-0.02em", margin: 0, lineHeight: 1.2, color: T.primary}}>{title}</h2>
-          </div>
-        </div>
-      );
-      const TipBox = ({type = "tip", title, children}) => {
-        const styles = {
-          tip:     { bg: T.greenBg,  border: T.green,  color: "#456A2E", icon: "lightbulb" },
-          warning: { bg: T.yellowBg, border: T.yellow, color: "#7A5A0A", icon: "warning" },
-          alert:   { bg: T.orangeBg, border: T.orange, color: "#8A3F0A", icon: "alert" },
-          naru:    { bg: T.pinkBg,   border: T.pink,   color: T.primary, icon: "sprout" },
-        }[type];
-        return (
-          <div style={{background: styles.bg, borderRadius: 20, padding: "18px 22px", border: `2px solid ${styles.border}40`, margin: "14px 0"}}>
-            <div style={{display: "flex", gap: 10, alignItems: "flex-start"}}>
-              <div style={{flexShrink: 0, color: styles.color, display: "flex", alignItems: "center"}}><Icon name={styles.icon} size={22} strokeWidth={2}/></div>
-              <div style={{flex: 1, minWidth: 0}}>
-                {title && <div style={{fontFamily: T.sans, fontSize: 13, fontWeight: 800, color: styles.color, marginBottom: 6, letterSpacing: "0.02em"}}>{title}</div>}
-                <div style={{fontFamily: T.sans, fontSize: 14, lineHeight: 1.85, color: T.primary, fontWeight: 500}}>{children}</div>
-              </div>
-            </div>
-          </div>
-        );
-      };
-      const SubStep = ({num, title, children, accent = T.pink}) => (
-        <div style={{display: "grid", gridTemplateColumns: "auto 1fr", gap: 14, padding: "16px 0", borderBottom: `1.5px dashed ${T.borderLight}`}}>
-          <div style={{minWidth: 32, height: 32, borderRadius: "50%", background: accent + "20", color: accent, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: T.sans, fontWeight: 800, fontSize: 13, flexShrink: 0}}>{num}</div>
-          <div>
-            <div style={{fontFamily: T.sans, fontSize: 16, fontWeight: 700, color: T.primary, marginBottom: 6}}>{title}</div>
-            <div style={{fontFamily: T.sans, fontSize: 14, lineHeight: 1.85, color: T.secondary, fontWeight: 500}}>{children}</div>
-          </div>
-        </div>
-      );
-
-      return (
-        <div>
-          {/* Back */}
-          <section style={{padding: "48px 24px 0"}}>
-            <div style={{maxWidth: 760, margin: "0 auto"}}>
-              <button onClick={()=>setShowGuide(null)} style={{
-                fontFamily: T.sans, fontSize: 14, color: T.pink, background: "none", border: "none",
-                cursor: "pointer", padding: 0, fontWeight: 700,
-              }}>← サイト一覧に戻る</button>
-            </div>
-          </section>
-
-          {/* Hero */}
-          <section style={{padding: "32px 24px 56px", textAlign: "center", background: `linear-gradient(180deg, ${T.pinkSoft} 0%, ${T.soft} 100%)`}}>
-            <div style={{maxWidth: 760, margin: "0 auto"}}>
-              <div style={{display: "flex", justifyContent: "center", marginBottom: 20}}>
-                <Character pose="wave" size={140}/>
-              </div>
-              <div style={{
-                display: "inline-flex", alignItems: "center", gap: 8,
-                background: T.pinkSoft, borderRadius: 12,
-                padding: "8px 16px", marginBottom: 16,
-                border: `2px solid ${T.pink}30`,
-              }}>
-                <span style={{
-                  fontFamily: T.sans, fontSize: 10, fontWeight: 800,
-                  background: T.pink, color: T.white,
-                  padding: "3px 8px", borderRadius: 4,
-                  letterSpacing: "0.05em",
-                }}>PR</span>
-                <span style={{fontFamily: T.sans, fontSize: 12, color: T.secondary, fontWeight: 500}}>
-                  このガイドはアフィリエイト広告を含みます
-                </span>
-              </div>
-              <Eyebrow>Complete Guide</Eyebrow>
-              <h1 style={{fontFamily: T.sans, fontSize: "clamp(32px, 6vw, 56px)", fontWeight: 800, letterSpacing: "-0.01em", margin: "0 0 16px", lineHeight: 1.15, color: T.primary}}>
-                Wolt<br/><span style={{color: T.pink}}>完全ガイド</span>
-              </h1>
-              <p style={{fontFamily: T.sans, fontSize: 15, lineHeight: 1.85, color: T.secondary, margin: 0, fontWeight: 500}}>
-                フィンランド発の配達アプリ🌱<br/>サポートが手厚く、報酬も高め
-              </p>
-            </div>
-          </section>
-
-          {/* Quick Info */}
-          <Section>
-            <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 12}}>
-              <Card style={{padding: "20px 22px"}}>
-                <div style={{fontSize: 24, marginBottom: 8}}>⏱</div>
-                <div style={{fontFamily: T.sans, fontSize: 12, color: T.tertiary, fontWeight: 700, marginBottom: 4}}>所要時間</div>
-                <div style={{fontFamily: T.sans, fontSize: 14, fontWeight: 700, color: T.primary, lineHeight: 1.6}}>審査：3〜7日<br/>初配達まで：1週間</div>
-              </Card>
-              <Card style={{padding: "20px 22px"}}>
-                <div style={{fontSize: 24, marginBottom: 8}}>💰</div>
-                <div style={{fontFamily: T.sans, fontSize: 12, color: T.tertiary, fontWeight: 700, marginBottom: 4}}>料金</div>
-                <div style={{fontFamily: T.sans, fontSize: 14, fontWeight: 700, color: T.primary, lineHeight: 1.6}}>登録：無料<br/>配達バッグ：公式が貸与あり</div>
-              </Card>
-              <Card style={{padding: "20px 22px"}}>
-                <div style={{fontSize: 24, marginBottom: 8}}>🛵</div>
-                <div style={{fontFamily: T.sans, fontSize: 12, color: T.tertiary, fontWeight: 700, marginBottom: 4}}>必要なもの</div>
-                <div style={{fontFamily: T.sans, fontSize: 14, fontWeight: 700, color: T.primary, lineHeight: 1.6}}>スマホ＋自転車<br/>（または原付・バイク）</div>
-              </Card>
-            </div>
-          </Section>
-
-          {/* Section 1: 準備するもの */}
-          <Section style={{background: T.pinkSoft}}>
-            <SectionTitle eyebrow="Section 1" num="0" title="始める前に準備するもの" accent={T.pink}/>
-            <div style={{display: "grid", gap: 12}}>
-              {[
-                { icon: "phone", title: "スマホ", desc: "Wolt配達員アプリ用。最新OS推奨。" },
-                { icon: "bicycle", title: "配達する乗り物", desc: "自転車推奨（環境配慮型）。原付・バイクもOK。" },
-                { icon: "bag", title: "配達バッグ", desc: "公式バッグの貸与あり（保証金が必要なことも）。" },
-                { icon: "id", title: "本人確認書類", desc: "運転免許証・マイナンバーカード・在留カードなど。" },
-                { icon: "bank", title: "銀行口座", desc: "報酬振込先。" },
-                { icon: "location", title: "対応エリア", desc: "東京、大阪、名古屋、福岡など都市部のみ。地方は未対応。" },
-              ].map(item => (
-                <div key={item.title} style={{
-                  background: T.white, borderRadius: 22, padding: "20px 24px",
-                  border: `2px solid ${T.borderLight}`, display: "grid", gridTemplateColumns: "auto 1fr", gap: 16, alignItems: "flex-start",
-                }}>
-                  <div style={{color: T.pink, display: "flex", alignItems: "center", justifyContent: "center", width: 44, height: 44, borderRadius: 12, background: T.pinkBg}}><Icon name={item.icon} size={26} strokeWidth={2}/></div>
-                  <div>
-                    <div style={{fontFamily: T.sans, fontSize: 15, fontWeight: 700, color: T.primary, marginBottom: 4}}>{item.title}</div>
-                    <div style={{fontFamily: T.sans, fontSize: 13, lineHeight: 1.8, color: T.secondary, fontWeight: 500}}>{item.desc}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Section>
-
-          {/* Section 2: 登録 */}
-          <Section>
-            <SectionTitle eyebrow="Section 2" num="1" title="アカウントを登録する" accent={T.green}/>
-            <Card style={{padding: "28px 28px"}}>
-              <SubStep num="①" title="Wolt配達員サイトを開く" accent={T.green}>
-                wolt.com/ja/jpn/courier にアクセス。
-              </SubStep>
-              <SubStep num="②" title="「Wolt配達員に登録」をタップ" accent={T.green}>
-                応募フォームへ。
-              </SubStep>
-              <SubStep num="③" title="基本情報を入力" accent={T.green}>
-                氏名、メアド、電話番号、配達エリアなど。
-              </SubStep>
-              <SubStep num="④" title="本人確認書類をアップロード" accent={T.green}>
-                スマホで撮影してアップロード。
-              </SubStep>
-              <SubStep num="⑤" title="面接（オンライン or 対面）" accent={T.green}>
-                Wolt特有。スタッフからのオンライン面接や、専用拠点での説明会あり。
-              </SubStep>
-              <SubStep num="⑥" title="配達バッグを受け取る" accent={T.green}>
-                Wolt拠点で受け取り（または郵送）。
-              </SubStep>
-              <SubStep num="⑦" title="審査完了 → 配達開始" accent={T.green}>
-                アプリにログインして稼働開始。
-              </SubStep>
-            </Card>
-          </Section>
-
-          {/* Section 3: 配達 */}
-          <Section style={{background: T.greenBg}}>
-            <SectionTitle eyebrow="Section 3" num="2" title="配達の流れ" accent={T.green}/>
-            <Card style={{padding: "28px 28px"}}>
-              <SubStep num="①" title="アプリを起動して「オンライン」" accent={T.green}>
-                配達エリアでオンライン状態に。
-              </SubStep>
-              <SubStep num="②" title="配達依頼を受け取る" accent={T.green}>
-                Woltはアルゴリズムが効率的なルートを提案。
-              </SubStep>
-              <SubStep num="③" title="店舗で料理受取" accent={T.green}>
-                「Woltです」と挨拶。アプリで受取完了をタップ。
-              </SubStep>
-              <SubStep num="④" title="お客様へ配達" accent={T.green}>
-                ナビ通りに配達。アプリで配達完了をタップ。
-              </SubStep>
-            </Card>
-            <TipBox type="naru" title="Woltの独自の強み">
-              ✓ <strong>サポートが手厚い</strong>：チャット・電話で24時間対応<br/>
-              ✓ <strong>専用拠点あり</strong>：問題があれば直接相談可能<br/>
-              ✓ <strong>報酬が高め</strong>：Uber Eatsより1件あたりが高いことも<br/>
-              ✓ <strong>スタッフが配達員思い</strong>：フィンランド企業らしい働きやすさ
-            </TipBox>
-          </Section>
-
-          {/* Section 4: 報酬 */}
-          <Section>
-            <SectionTitle eyebrow="Section 4" num="3" title="報酬の受け取り方" accent={T.pink}/>
-            <Card style={{padding: "28px 28px"}}>
-              <SubStep num="①" title="週払い" accent={T.pink}>
-                月〜日曜の週単位で集計。翌週水曜に振込。
-              </SubStep>
-              <SubStep num="②" title="チップ制度あり" accent={T.pink}>
-                お客様からのチップが報酬にプラス。Uber Eatsより文化として根付いている。
-              </SubStep>
-              <SubStep num="③" title="ボーナス制度" accent={T.pink}>
-                繁忙時間帯のボーナスあり。
-              </SubStep>
-            </Card>
-            <TipBox type="alert" title="税金のこと">
-              業務委託扱い。年20万円超で確定申告必要。
-              <div style={{marginTop: 12}}>
-                <button onClick={()=>{setShowGuide(null); setTab("tax");}} style={{padding: "10px 18px", borderRadius: 980, background: T.pink, color: T.white, border: "none", fontFamily: T.sans, fontSize: 13, fontWeight: 700, cursor: "pointer", boxShadow: `0 4px 0 0 #6BA053`}}>確定申告を確認する →</button>
-              </div>
-            </TipBox>
-          </Section>
-
-          {/* FAQ */}
-          <Section>
-            <SectionTitle eyebrow="FAQ" num="?" title="よくある質問" accent={T.pink}/>
-            <div style={{display: "grid", gap: 12}}>
-              {[
-                { q: "Uber Eatsとの違いは？", a: "Woltは①サポートが手厚い、②報酬が高め、③配達員思いな企業文化。一方で対応エリアが限定的。" },
-                { q: "対応エリアはどこ？", a: "東京、大阪、名古屋、福岡、広島、札幌、京都など主要都市のみ。地方都市は未対応。" },
-                { q: "Uber Eatsと併用OK？", a: "OK。マルチアプリ稼働で効率UP。報酬の高い方を選んで配達。" },
-                { q: "配達バッグは買わなくていい？", a: "Woltは公式バッグの貸与制度あり（保証金が必要な場合も）。詳細は応募時に確認を。" },
-                { q: "チップは本当にもらえる？", a: "お客様の任意なので保証はないが、丁寧な配達をすると貰えやすい。" },
-                { q: "サポートに連絡したい時は？", a: "アプリ内チャット、電話、専用拠点（東京）など複数の連絡手段あり。トラブル時も安心。" },
-                { q: "自転車推奨の理由は？", a: "環境配慮型の企業文化。フィンランドでは自転車・徒歩配達が一般的。日本でも同じ姿勢。" },
-                { q: "審査は厳しい？", a: "Uber Eatsより少し厳しめ。面接（オンライン）があるので、配達員としてのマナーや意識が大切。" },
-              ].map((f, i) => (
-                <Card key={i} style={{padding: "20px 24px"}}>
-                  <div style={{fontFamily: T.sans, fontSize: 15, fontWeight: 700, color: T.pink, marginBottom: 8, display: "flex", gap: 10}}>
-                    <span>Q.</span><span>{f.q}</span>
-                  </div>
-                  <div style={{fontFamily: T.sans, fontSize: 14, lineHeight: 1.85, color: T.secondary, fontWeight: 500, paddingLeft: 26}}>
-                    {f.a}
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </Section>
-
-          {/* ナル相談 */}
-          <Section style={{background: T.pinkSoft}}>
-            <Card style={{padding: "40px 32px", textAlign: "center"}}>
-              <div style={{display: "flex", justifyContent: "center", marginBottom: 16}}>
-                <Character pose="default" size={100}/>
-              </div>
-              <Eyebrow>Need Help?</Eyebrow>
-              <h2 style={{fontFamily: T.sans, fontSize: "clamp(22px, 3.5vw, 32px)", fontWeight: 700, letterSpacing: "-0.02em", margin: "0 0 12px", lineHeight: 1.3, color: T.primary}}>
-                わからないこと、何でも聞いてね
-              </h2>
-              <p style={{fontFamily: T.sans, fontSize: 14, lineHeight: 1.85, color: T.secondary, margin: "0 0 24px", fontWeight: 500}}>
-                登録中や利用中につまずいたら、ボクに気軽に相談してね🌱
-              </p>
-              <CTA onClick={()=>{setShowGuide(null); setTab("chat");}}>ナルに相談する →</CTA>
-            </Card>
-          </Section>
-
-          {/* 最終CTA */}
-          <Section>
-            <Card style={{padding: "36px 32px", textAlign: "center", background: T.greenBg, border: `2px solid ${T.green}30`}}>
-              <h2 style={{fontFamily: T.sans, fontSize: "clamp(22px, 3.5vw, 30px)", fontWeight: 700, margin: "0 0 12px", color: T.primary}}>
-                準備は万全！始めてみよう🌱
-              </h2>
-              <p style={{fontFamily: T.sans, fontSize: 14, lineHeight: 1.85, color: T.secondary, margin: "0 0 24px", fontWeight: 500}}>
-                このガイドはいつでも見直せるので、つまずいたら戻ってきてね。
-              </p>
-              <a href="https://wolt.com/ja/jpn/courier" target="_blank" rel="noopener noreferrer" style={{
-                display: "inline-flex", alignItems: "center", gap: 8,
-                padding: "16px 32px", borderRadius: 980,
-                background: T.pink, color: T.white,
-                fontFamily: T.sans, fontSize: 16, fontWeight: 800,
-                textDecoration: "none", letterSpacing: "0.02em",
-                boxShadow: `0 4px 0 0 #6BA053`,
-              }}>
-                Wolt配達員に登録する
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M7 17L17 7"/>
                   <path d="M8 7H17V16"/>
@@ -7815,9 +7602,9 @@ export default function App() {
                         padding: "4px 8px", borderRadius: 6,
                         background: T.mute, border: `1px solid ${T.borderLight}`,
                       }} title="広告主とアフィリエイト提携している可能性があります">PR</span>
-                      {({"クラウドワークス":"crowdworks","メルカリ":"mercari","Uber Eats":"ubereats","ランサーズ":"lancers","ココナラ":"coconala","ラクマ":"rakuma","Yahoo!フリマ":"yahoofrima","シュフティ":"shufti","出前館":"demaecan","Wolt":"wolt","レバテックフリーランス":"levtech","Behance":"behance","YouTube Studio":"youtube_studio","マナリンク":"manalink","まなぶてらす":"manatera","家庭教師のトライ":"try_teacher","家庭教師のファースト":"first_teacher"})[listing.name] && (
+                      {({"クラウドワークス":"crowdworks","メルカリ":"mercari","Uber Eats":"ubereats","ランサーズ":"lancers","ココナラ":"coconala","ラクマ":"rakuma","Yahoo!フリマ":"yahoofrima","シュフティ":"shufti","出前館":"demaecan","レバテックフリーランス":"levtech","Behance":"behance","YouTube Studio":"youtube_studio","マナリンク":"manalink","まなぶてらす":"manatera","家庭教師のトライ":"try_teacher","家庭教師のファースト":"first_teacher"})[listing.name] && (
                         <button
-                          onClick={()=>setShowGuide(({"クラウドワークス":"crowdworks","メルカリ":"mercari","Uber Eats":"ubereats","ランサーズ":"lancers","ココナラ":"coconala","ラクマ":"rakuma","Yahoo!フリマ":"yahoofrima","シュフティ":"shufti","出前館":"demaecan","Wolt":"wolt","レバテックフリーランス":"levtech","Behance":"behance","YouTube Studio":"youtube_studio","マナリンク":"manalink","まなぶてらす":"manatera","家庭教師のトライ":"try_teacher","家庭教師のファースト":"first_teacher"})[listing.name])}
+                          onClick={()=>setShowGuide(({"クラウドワークス":"crowdworks","メルカリ":"mercari","Uber Eats":"ubereats","ランサーズ":"lancers","ココナラ":"coconala","ラクマ":"rakuma","Yahoo!フリマ":"yahoofrima","シュフティ":"shufti","出前館":"demaecan","レバテックフリーランス":"levtech","Behance":"behance","YouTube Studio":"youtube_studio","マナリンク":"manalink","まなぶてらす":"manatera","家庭教師のトライ":"try_teacher","家庭教師のファースト":"first_teacher"})[listing.name])}
                           style={{
                             display: "inline-flex", alignItems: "center", gap: 8,
                             padding: "12px 20px", borderRadius: 980,
@@ -7846,6 +7633,52 @@ export default function App() {
               </div>
             </Section>
           )}
+          {/* 口座の準備への誘導 */}
+          <Section style={{paddingTop: 0, paddingBottom: 0}}>
+            <Card
+              onClick={()=>{ setTab("tax"); setTaxView("bank"); }}
+              style={{
+                background: `linear-gradient(135deg, ${T.pinkSoft} 0%, ${T.pinkBg} 100%)`,
+                border: `2.5px solid ${T.pink}40`, padding: "32px 30px",
+                display: "flex", gap: 22, alignItems: "center", flexWrap: "wrap",
+              }}
+            >
+              <div style={{
+                minWidth: 64, height: 64, borderRadius: 22, background: T.white,
+                color: "#5A8A3D", display: "flex", alignItems: "center", justifyContent: "center",
+                flexShrink: 0, boxShadow: `0 3px 0 0 ${T.pink}40`,
+              }}>
+                <Icon name="bank" size={32} strokeWidth={2}/>
+              </div>
+              <div style={{flex: 1, minWidth: 200}}>
+                <div style={{
+                  display: "inline-block", fontFamily: T.sans, fontSize: 11, fontWeight: 800,
+                  color: "#5A8A3D", background: T.white, padding: "4px 12px",
+                  borderRadius: 980, marginBottom: 10, letterSpacing: "0.06em",
+                }}>START HERE</div>
+                <h3 style={{
+                  fontFamily: T.sans, fontSize: 21, fontWeight: 800, letterSpacing: "-0.02em",
+                  margin: "0 0 8px", color: T.primary, lineHeight: 1.35,
+                }}>
+                  始める前に、口座を分けておきませんか
+                </h3>
+                <p style={{fontFamily: T.sans, fontSize: 14, lineHeight: 1.8, color: T.secondary, margin: 0, fontWeight: 500}}>
+                  副業用の口座を分けておくと、確定申告のときに1年分を仕分ける作業がまるごと不要になります。スマホで10分、開設は無料です。
+                </p>
+              </div>
+              <div style={{
+                display: "flex", alignItems: "center", gap: 8,
+                fontFamily: T.sans, fontSize: 14, fontWeight: 800, color: "#5A8A3D",
+                flexShrink: 0,
+              }}>
+                準備を見る
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14"/><path d="M13 6l6 6-6 6"/>
+                </svg>
+              </div>
+            </Card>
+          </Section>
+
           <Section>
             <Card style={{background: T.orangeBg, border: "none", padding: "40px 36px"}}>
               <Eyebrow>Important</Eyebrow>
@@ -8056,7 +7889,7 @@ export default function App() {
       </section>
       <Section style={{paddingTop: 48, paddingBottom: 0}}>
         <div style={{display: "flex", gap: 8, justifyContent: "center", marginBottom: 48, flexWrap: "wrap"}}>
-          {[{k:"check",l:"申告チェック"},{k:"sim",l:"税額シミュレーター"},{k:"guide",l:"手続きガイド"}].map(n=>(
+          {[{k:"check",l:"申告チェック"},{k:"sim",l:"税額シミュレーター"},{k:"guide",l:"手続きガイド"},{k:"bank",l:"口座の準備"}].map(n=>(
             <Pill key={n.k} active={taxView===n.k} onClick={()=>setTaxView(n.k)}>{n.l}</Pill>
           ))}
         </div>
@@ -8238,6 +8071,206 @@ export default function App() {
               </div>
             </div>
           ))}
+        </Section>
+      )}
+
+      {taxView === "bank" && (
+        <Section style={{paddingTop: 0}}>
+          {/* なぜ必要か */}
+          <Card style={{padding: "40px 32px", marginBottom: 24, background: T.pinkSoft, border: "none"}}>
+            <Eyebrow>Why</Eyebrow>
+            <h3 style={{fontFamily: T.sans, fontSize: 26, fontWeight: 700, letterSpacing: "-0.02em", margin: "0 0 16px", color: T.primary, lineHeight: 1.3}}>
+              副業用の口座を分けると、<br/>確定申告がラクになります
+            </h3>
+            <p style={{fontFamily: T.sans, fontSize: 15, lineHeight: 1.9, color: T.secondary, margin: 0, fontWeight: 500}}>
+              生活費と副業のお金が同じ口座に混ざっていると、申告のときに1年分の入出金から副業分だけを探すことになります。分けておくだけで、その作業がまるごと不要になります。
+            </p>
+          </Card>
+
+          {/* Before / After 比較 */}
+          <div style={{display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr auto 1fr", gap: 16, alignItems: "center", marginBottom: 40}}>
+            <Card style={{padding: "24px 22px", background: "#F7F2ED", border: `2px solid ${T.border}`}}>
+              <div style={{display: "flex", alignItems: "center", gap: 8, marginBottom: 14}}>
+                <div style={{color: T.tertiary, display: "flex"}}><Icon name="alert" size={18} strokeWidth={2}/></div>
+                <div style={{fontFamily: T.sans, fontSize: 14, fontWeight: 800, color: T.tertiary}}>分けていない場合</div>
+              </div>
+              {[
+                {c: "#DCD2C6", w: "100%"}, {c: "#E8C4BC", w: "82%"},
+                {c: "#DCD2C6", w: "93%"}, {c: "#E8C4BC", w: "70%"},
+                {c: "#DCD2C6", w: "88%"},
+              ].map((r, i) => (
+                <div key={i} style={{height: 10, borderRadius: 5, background: r.c, width: r.w, marginBottom: 8}}/>
+              ))}
+              <div style={{fontFamily: T.sans, fontSize: 12.5, color: T.secondary, marginTop: 12, lineHeight: 1.7, fontWeight: 500}}>
+                生活費と副業が混在。1行ずつ確認が必要。
+              </div>
+            </Card>
+
+            <div style={{
+              display: "flex", justifyContent: "center", alignItems: "center",
+              color: T.pink, transform: isMobile ? "rotate(90deg)" : "none",
+              fontSize: 28, fontWeight: 800, fontFamily: T.sans,
+            }}>→</div>
+
+            <Card style={{padding: "24px 22px", background: T.pinkBg, border: `2px solid ${T.pink}40`}}>
+              <div style={{display: "flex", alignItems: "center", gap: 8, marginBottom: 14}}>
+                <div style={{color: "#5A8A3D", display: "flex"}}><Icon name="sprout" size={18} strokeWidth={2}/></div>
+                <div style={{fontFamily: T.sans, fontSize: 14, fontWeight: 800, color: "#5A8A3D"}}>分けている場合</div>
+              </div>
+              {["100%", "88%", "95%", "76%", "90%"].map((w, i) => (
+                <div key={i} style={{height: 10, borderRadius: 5, background: "#A8D48A", width: w, marginBottom: 8}}/>
+              ))}
+              <div style={{fontFamily: T.sans, fontSize: 12.5, color: T.secondary, marginTop: 12, lineHeight: 1.7, fontWeight: 500}}>
+                通帳の動きが、そのまま副業の収支に。
+              </div>
+            </Card>
+          </div>
+
+          {/* 用意するもの */}
+          <Eyebrow>Checklist</Eyebrow>
+          <h3 style={{fontFamily: T.sans, fontSize: 24, fontWeight: 700, letterSpacing: "-0.02em", margin: "0 0 24px", color: T.primary}}>
+            用意するもの
+          </h3>
+          <div style={{display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 14, marginBottom: 48}}>
+            {BANK_PREP.map((p, i) => (
+              <Card key={i} style={{padding: "22px 20px", display: "flex", gap: 14, alignItems: "flex-start"}}>
+                <div style={{
+                  minWidth: 44, height: 44, borderRadius: 14, background: T.pinkBg,
+                  color: "#5A8A3D", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
+                }}>
+                  <Icon name={p.icon} size={22} strokeWidth={2}/>
+                </div>
+                <div style={{minWidth: 0}}>
+                  <div style={{fontFamily: T.sans, fontSize: 15.5, fontWeight: 700, color: T.primary, marginBottom: 5}}>{p.name}</div>
+                  <div style={{fontFamily: T.sans, fontSize: 13.5, lineHeight: 1.75, color: T.secondary, fontWeight: 500}}>{p.desc}</div>
+                </div>
+              </Card>
+            ))}
+          </div>
+
+          {/* 開設手順 */}
+          <Eyebrow>Steps</Eyebrow>
+          <h3 style={{fontFamily: T.sans, fontSize: 24, fontWeight: 700, letterSpacing: "-0.02em", margin: "0 0 8px", color: T.primary}}>
+            口座開設の流れ
+          </h3>
+          <p style={{fontFamily: T.sans, fontSize: 14.5, color: T.secondary, margin: "0 0 24px", fontWeight: 500}}>
+            スマホだけで完結します。全部で10分ほどの作業です。
+          </p>
+          <Card style={{padding: "8px 28px 16px", marginBottom: 48}}>
+            {BANK_STEPS.map((s, i) => (
+              <div key={s.n} style={{
+                display: "grid", gridTemplateColumns: "auto 1fr", gap: 16,
+                padding: "20px 0",
+                borderBottom: i === BANK_STEPS.length - 1 ? "none" : `1.5px dashed ${T.borderLight}`,
+              }}>
+                <div style={{
+                  minWidth: 34, height: 34, borderRadius: "50%", background: T.pink, color: T.white,
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  fontFamily: T.sans, fontWeight: 800, fontSize: 14, flexShrink: 0,
+                }}>{s.n}</div>
+                <div>
+                  <div style={{fontFamily: T.sans, fontSize: 16.5, fontWeight: 700, color: T.primary, marginBottom: 6}}>{s.title}</div>
+                  <div style={{fontFamily: T.sans, fontSize: 14, lineHeight: 1.85, color: T.secondary, fontWeight: 500}}>{s.desc}</div>
+                </div>
+              </div>
+            ))}
+          </Card>
+
+          {/* 銀行比較 */}
+          <Eyebrow>Comparison</Eyebrow>
+          <h3 style={{fontFamily: T.sans, fontSize: 24, fontWeight: 700, letterSpacing: "-0.02em", margin: "0 0 8px", color: T.primary}}>
+            どこで開設する？
+          </h3>
+          <p style={{fontFamily: T.sans, fontSize: 14.5, color: T.secondary, margin: "0 0 24px", fontWeight: 500}}>
+            副業用として使いやすい順に並べました。どれも口座維持手数料はかからないので、迷ったら2つ作っても問題ありません。
+          </p>
+
+          <div style={{display: "grid", gap: 16, marginBottom: 32}}>
+            {BANKS.map((b) => (
+              <Card key={b.name} style={{
+                padding: "26px 24px",
+                border: b.rank === 1 ? `2.5px solid ${T.pink}` : `2px solid ${T.borderLight}`,
+                background: b.rank === 1 ? T.pinkSoft : T.white,
+              }}>
+                <div style={{display: "flex", gap: 16, alignItems: "flex-start", marginBottom: 16, flexWrap: "wrap"}}>
+                  <div style={{
+                    minWidth: 46, height: 46, borderRadius: 16,
+                    background: b.rank === 1 ? T.pink : T.pinkBg,
+                    color: b.rank === 1 ? T.white : "#5A8A3D",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    fontFamily: T.sans, fontWeight: 800, fontSize: 18, flexShrink: 0,
+                  }}>{b.rank}</div>
+                  <div style={{flex: 1, minWidth: 180}}>
+                    <div style={{display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap", marginBottom: 4}}>
+                      <div style={{fontFamily: T.sans, fontSize: 19, fontWeight: 800, color: T.primary}}>{b.name}</div>
+                      <div style={{
+                        fontFamily: T.sans, fontSize: 11.5, fontWeight: 800, color: "#5A8A3D",
+                        background: T.pinkBg, padding: "4px 10px", borderRadius: 980,
+                      }}>{b.badge}</div>
+                    </div>
+                    <div style={{fontFamily: T.sans, fontSize: 14, color: T.secondary, fontWeight: 600}}>{b.tagline}</div>
+                  </div>
+                </div>
+
+                <div style={{display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 14, marginBottom: 16}}>
+                  <div>
+                    <div style={{fontFamily: T.sans, fontSize: 12, fontWeight: 800, color: "#5A8A3D", marginBottom: 8, letterSpacing: "0.03em"}}>いいところ</div>
+                    {b.good.map((g, i) => (
+                      <div key={i} style={{display: "flex", gap: 8, marginBottom: 7, alignItems: "flex-start"}}>
+                        <div style={{color: T.pink, flexShrink: 0, marginTop: 1, display: "flex"}}><Icon name="sprout" size={14} strokeWidth={2.4}/></div>
+                        <div style={{fontFamily: T.sans, fontSize: 13.5, lineHeight: 1.7, color: T.primary, fontWeight: 500}}>{g}</div>
+                      </div>
+                    ))}
+                  </div>
+                  <div>
+                    <div style={{fontFamily: T.sans, fontSize: 12, fontWeight: 800, color: "#B08B2E", marginBottom: 8, letterSpacing: "0.03em"}}>気をつける点</div>
+                    {b.care.map((c, i) => (
+                      <div key={i} style={{display: "flex", gap: 8, marginBottom: 7, alignItems: "flex-start"}}>
+                        <div style={{color: T.yellow, flexShrink: 0, marginTop: 1, display: "flex"}}><Icon name="alert" size={14} strokeWidth={2.4}/></div>
+                        <div style={{fontFamily: T.sans, fontSize: 13.5, lineHeight: 1.7, color: T.primary, fontWeight: 500}}>{c}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div style={{
+                  display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap",
+                  background: T.white, borderRadius: 16, padding: "12px 16px",
+                  border: `1.5px solid ${T.borderLight}`, marginBottom: 16,
+                }}>
+                  <div style={{color: T.pink, display: "flex", flexShrink: 0}}><Icon name="target" size={16} strokeWidth={2}/></div>
+                  <div style={{fontFamily: T.sans, fontSize: 13.5, color: T.primary, fontWeight: 600}}>
+                    向いている人：{b.forWho}
+                  </div>
+                </div>
+
+                <div style={{display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap"}}>
+                  <a href={b.url} target="_blank" rel="noopener noreferrer sponsored" style={{textDecoration: "none"}}>
+                    <button style={{
+                      padding: "12px 26px", borderRadius: 980, background: T.pink, color: T.white,
+                      border: "none", fontSize: 14, fontWeight: 700, fontFamily: T.sans, cursor: "pointer",
+                      boxShadow: "0 3px 0 0 #6BA053",
+                    }}>公式サイトを見る</button>
+                  </a>
+                  <span style={{
+                    fontFamily: T.sans, fontSize: 11, fontWeight: 700, color: T.tertiary,
+                    border: `1.5px solid ${T.borderLight}`, borderRadius: 980, padding: "4px 10px",
+                  }}>PR</span>
+                </div>
+              </Card>
+            ))}
+          </div>
+
+          {/* 注意書き */}
+          <Card style={{padding: "22px 24px", background: T.yellowBg, border: `2px solid ${T.yellow}40`}}>
+            <div style={{display: "flex", gap: 10, alignItems: "flex-start"}}>
+              <div style={{flexShrink: 0, color: "#7A5A0A", display: "flex"}}><Icon name="warning" size={20} strokeWidth={2}/></div>
+              <div style={{fontFamily: T.sans, fontSize: 13.5, lineHeight: 1.85, color: T.primary, fontWeight: 500}}>
+                手数料の無料回数や優遇条件は、各行の規定により変わります。最新の条件は必ず公式サイトでご確認ください。<br/>
+                なお、口座を分けることは義務ではなく、管理をラクにするための方法です。
+              </div>
+            </div>
+          </Card>
         </Section>
       )}
     </div>
@@ -8444,7 +8477,7 @@ export default function App() {
                 border: `1px solid ${T.borderLight}`, marginBottom: 12,
                 display: "grid", gridTemplateColumns: "auto 1fr", gap: 32, alignItems: "baseline"
               }}>
-                <div style={{fontFamily: T.sans, color: T.pink, fontSize: 40, color: T.green, minWidth: 60}}>{c.n}</div>
+                <div style={{fontFamily: T.sans, fontSize: 40, color: T.green, minWidth: 60}}>{c.n}</div>
                 <div>
                   <h3 style={{fontFamily: T.sans, fontSize: 22, fontWeight: 600, letterSpacing: "-0.02em", margin: "0 0 12px", color: T.primary}}>{c.title}</h3>
                   <p style={{fontFamily: T.sans, fontSize: 16, lineHeight: 1.7, color: T.secondary, margin: 0, letterSpacing: "-0.01em"}}>{c.body}</p>
@@ -8468,7 +8501,7 @@ export default function App() {
                 border: `1px solid ${T.borderLight}`, marginBottom: 12,
                 display: "grid", gridTemplateColumns: "auto 1fr", gap: 32, alignItems: "baseline"
               }}>
-                <div style={{fontFamily: T.sans, color: T.pink, fontSize: 40, color: T.green, minWidth: 60}}>{s.n}</div>
+                <div style={{fontFamily: T.sans, fontSize: 40, color: T.green, minWidth: 60}}>{s.n}</div>
                 <div>
                   <h4 style={{fontFamily: T.sans, fontSize: 22, fontWeight: 600, letterSpacing: "-0.02em", margin: "0 0 8px", color: T.primary}}>{s.t}</h4>
                   <p style={{fontFamily: T.sans, fontSize: 15, lineHeight: 1.65, color: T.secondary, margin: 0, letterSpacing: "-0.01em"}}>{s.d}</p>
